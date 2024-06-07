@@ -1,0 +1,1 @@
+Need to set up SMTP in Config/Email.php

@@ -1,0 +1,355 @@
+CRITICAL - 2024-06-04 08:39:26 --> Undefined array key "text_id"
+in APPPATH\Models\Text\TextModel.php on line 416.
+ 1 APPPATH\Models\Text\TextModel.php(416): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "text_id"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Text\\TextModel.php', 416)
+ 2 APPPATH\Controllers\Text\TextController.php(193): App\Models\Text\TextModel->updateRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Text\TextController->update('21')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 08:49:26 --> Too few arguments to function App\Models\System\SystemUpdateModel::__construct(), 0 passed in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Employee\EmployeeModel.php on line 355 and exactly 1 expected
+in APPPATH\Models\System\SystemUpdateModel.php on line 11.
+ 1 APPPATH\Models\Employee\EmployeeModel.php(355): App\Models\System\SystemUpdateModel->__construct()
+ 2 APPPATH\Controllers\Employee\EmployeeController.php(183): App\Models\Employee\EmployeeModel->updateRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->update('8')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 08:49:51 --> Undefined variable $request
+in APPPATH\Models\System\SystemUpdateModel.php on line 13.
+ 1 APPPATH\Models\System\SystemUpdateModel.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $request', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\System\\SystemUpdateModel.php', 13)
+ 2 APPPATH\Models\Employee\EmployeeModel.php(355): App\Models\System\SystemUpdateModel->__construct()
+ 3 APPPATH\Controllers\Employee\EmployeeController.php(183): App\Models\Employee\EmployeeModel->updateRecord()
+ 4 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->update('8')
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 6 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 08:57:14 --> Call to undefined function App\Models\System\get()
+in APPPATH\Models\System\SystemUpdateModel.php on line 39.
+ 1 APPPATH\Controllers\System\SystemOptionController.php(27): App\Models\System\SystemUpdateModel->getRecord()
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\System\SystemOptionController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\System\SystemOptionController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 08:57:49 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::resultArray()
+in APPPATH\Models\System\SystemUpdateModel.php on line 39.
+ 1 APPPATH\Controllers\System\SystemOptionController.php(27): App\Models\System\SystemUpdateModel->getRecord()
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\System\SystemOptionController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\System\SystemOptionController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 08:57:56 --> Call to undefined method CodeIgniter\Database\MySQLi\Builder::resultArray()
+in APPPATH\Models\System\SystemUpdateModel.php on line 39.
+ 1 APPPATH\Controllers\System\SystemOptionController.php(27): App\Models\System\SystemUpdateModel->getRecord()
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\System\SystemOptionController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\System\SystemOptionController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 08:58:27 --> Undefined variable $data
+in APPPATH\Models\System\SystemUpdateModel.php on line 40.
+ 1 APPPATH\Models\System\SystemUpdateModel.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\System\\SystemUpdateModel.php', 40)
+ 2 APPPATH\Controllers\System\SystemOptionController.php(27): App\Models\System\SystemUpdateModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\System\SystemOptionController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\System\SystemOptionController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 08:58:56 --> Undefined variable $q
+in APPPATH\Models\System\SystemUpdateModel.php on line 40.
+ 1 APPPATH\Models\System\SystemUpdateModel.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $q', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\System\\SystemUpdateModel.php', 40)
+ 2 APPPATH\Controllers\System\SystemOptionController.php(27): App\Models\System\SystemUpdateModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\System\SystemOptionController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\System\SystemOptionController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 08:59:51 --> Undefined variable $systemUpdateTimte
+in APPPATH\Models\System\SystemUpdateModel.php on line 41.
+ 1 APPPATH\Models\System\SystemUpdateModel.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $systemUpdateTimte', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\System\\SystemUpdateModel.php', 41)
+ 2 APPPATH\Controllers\System\SystemOptionController.php(27): App\Models\System\SystemUpdateModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\System\SystemOptionController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\System\SystemOptionController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 09:25:02 --> Undefined array key "update_time"
+in APPPATH\Models\ContactData\ContactDataModel.php on line 44.
+ 1 APPPATH\Models\ContactData\ContactDataModel.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "update_time"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\ContactData\\ContactDataModel.php', 44)
+ 2 APPPATH\Controllers\ContactData\ContactDataController.php(30): App\Models\ContactData\ContactDataModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\ContactData\ContactDataController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ContactData\ContactDataController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 09:25:15 --> Undefined variable $systemUpdate
+in APPPATH\Models\ContactData\ContactDataModel.php on line 45.
+ 1 APPPATH\Models\ContactData\ContactDataModel.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $systemUpdate', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\ContactData\\ContactDataModel.php', 45)
+ 2 APPPATH\Controllers\ContactData\ContactDataController.php(30): App\Models\ContactData\ContactDataModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\ContactData\ContactDataController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ContactData\ContactDataController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 09:27:47 --> Call to undefined function App\Models\ContactData\htmlspecialchares_decode()
+in APPPATH\Models\ContactData\ContactDataModel.php on line 53.
+ 1 APPPATH\Controllers\ContactData\ContactDataController.php(30): App\Models\ContactData\ContactDataModel->getRecord()
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\ContactData\ContactDataController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ContactData\ContactDataController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 09:28:28 --> Call to undefined function App\Models\ContactData\htmlspecialchares_decode()
+in APPPATH\Models\ContactData\ContactDataModel.php on line 53.
+ 1 APPPATH\Controllers\ContactData\ContactDataController.php(30): App\Models\ContactData\ContactDataModel->getRecord()
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\ContactData\ContactDataController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ContactData\ContactDataController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 09:48:36 --> Class "App\Models\Content\ContentModel" not found
+in APPPATH\Controllers\Content\ContentController.php on line 29.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Content\ContentController->get()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Content\ContentController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 09:49:14 --> Class "App\Models\Content\ContentModel" not found
+in APPPATH\Controllers\Content\ContentController.php on line 29.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Content\ContentController->get()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Content\ContentController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 09:51:40 --> Class "App\Controllers\Content\ContactDataModel" not found
+in APPPATH\Controllers\Content\ContentController.php on line 51.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Content\ContentController->get()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Content\ContentController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 09:51:57 --> Undefined array key "services"
+in APPPATH\Controllers\Content\ContentController.php on line 55.
+ 1 APPPATH\Controllers\Content\ContentController.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "services"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Content\\ContentController.php', 55)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Content\ContentController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Content\ContentController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 10:45:45 --> Class "App\Controllers\Content\PricelistModel" not found
+in APPPATH\Controllers\Content\ContentController.php on line 40.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Content\ContentController->get()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Content\ContentController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 12:16:26 --> Call to undefined method App\Models\Insurance\InsuranceModel::setPageLimit
+in SYSTEMPATH\Model.php on line 838.
+ 1 APPPATH\Controllers\Insurance\InsuranceController.php(31): CodeIgniter\Model->__call('setPageLimit', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Insurance\InsuranceController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Insurance\InsuranceController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 12:46:15 --> Array to string conversion
+in SYSTEMPATH\Database\MySQLi\Builder.php on line 134.
+ 1 SYSTEMPATH\Database\MySQLi\Builder.php(134): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\system\\Database\\MySQLi\\Builder.php', 134)
+ 2 [internal function]: CodeIgniter\Database\MySQLi\Builder::CodeIgniter\Database\MySQLi\{closure}('`disabled`', [...])
+ 3 SYSTEMPATH\Database\MySQLi\Builder.php(134): array_map(Object(Closure), [...], [...])
+ 4 [internal function]: CodeIgniter\Database\MySQLi\Builder::CodeIgniter\Database\MySQLi\{closure}([...])
+ 5 SYSTEMPATH\Database\MySQLi\Builder.php(133): array_map(Object(Closure), [...])
+ 6 SYSTEMPATH\Database\BaseBuilder.php(1792): CodeIgniter\Database\MySQLi\Builder->_updateBatch('`insurances`', [...], [...])
+ 7 SYSTEMPATH\Database\BaseBuilder.php(2562): CodeIgniter\Database\BaseBuilder->batchExecute('_updateBatch', 100)
+ 8 APPPATH\Models\Insurance\InsuranceModel.php(36): CodeIgniter\Database\BaseBuilder->updateBatch([...], 'id')
+ 9 APPPATH\Controllers\Insurance\InsuranceController.php(78): App\Models\Insurance\InsuranceModel->updateRecord()
+10 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Insurance\InsuranceController->update()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Insurance\InsuranceController))
+12 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 12:48:27 --> Undefined array key "id"
+in APPPATH\Models\Insurance\InsuranceModel.php on line 37.
+ 1 APPPATH\Models\Insurance\InsuranceModel.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Insurance\\InsuranceModel.php', 37)
+ 2 APPPATH\Controllers\Insurance\InsuranceController.php(78): App\Models\Insurance\InsuranceModel->updateRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Insurance\InsuranceController->update()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Insurance\InsuranceController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 12:49:42 --> Call to undefined method App\Models\Insurance\InsuranceModel::setWithInactive
+in SYSTEMPATH\Model.php on line 838.
+ 1 APPPATH\Controllers\Insurance\InsuranceController.php(31): CodeIgniter\Model->__call('setWithInactive', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Insurance\InsuranceController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Insurance\InsuranceController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 13:07:47 --> Call to undefined method App\Models\Employee\EmployeeModel::setOrderBy
+in SYSTEMPATH\Model.php on line 838.
+ 1 APPPATH\Controllers\Employee\EmployeeController.php(49): CodeIgniter\Model->__call('setOrderBy', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-04 13:39:51 --> mysqli_sql_exception: Table 'davmosoft_cz_foxdent.rating' doesn't exist in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Rating\RatingModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Rating\RatingController.php(48): App\Models\Rating\RatingModel->getRecord()
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Rating\RatingController->get()
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rating\RatingController))
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-04 13:39:51 --> Table 'davmosoft_cz_foxdent.rating' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *
+FROM `rating`
+ORDER BY `id` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `rating`
+ORDER BY `id` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `rating`
+ORDER BY `id` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `rating`
+ORDER BY `id` ASC', [], false)
+ 5 APPPATH\Models\Rating\RatingModel.php(195): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Rating\RatingController.php(48): App\Models\Rating\RatingModel->getRecord()
+ 7 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Rating\RatingController->get()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rating\RatingController))
+ 9 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 13:41:50 --> Undefined property: stdClass::$create_time
+in APPPATH\Models\Rating\RatingModel.php on line 231.
+ 1 APPPATH\Models\Rating\RatingModel.php(231): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$create_time', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Rating\\RatingModel.php', 231)
+ 2 APPPATH\Controllers\Rating\RatingController.php(48): App\Models\Rating\RatingModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Rating\RatingController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Rating\RatingController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-04 16:39:27 --> mysqli_sql_exception: Unknown column 'texts_translations.rank' in 'order clause' in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `texts`....', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `texts`....')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `texts`....')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `texts`....', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Text\TextModel.php(314): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Content\ContentController.php(47): App\Models\Text\TextModel->getRecord()
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Content\ContentController->get()
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Content\ContentController))
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-04 16:39:27 --> Unknown column 'texts_translations.rank' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `texts`.`id`, `texts`.`slug`, `texts`.`type`, `texts`.`name`, `texts`.`note`, `texts`.`create_time`, `texts`.`update_time`, `texts_translations`.`id` AS `translationTextId`, `texts_translations`.`localization`, `texts_translations`.`title`, `texts_translations`.`subtitle`, `texts_translations`.`content`
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = \'cs_CZ\'
+AND `texts`.`removed` = 0
+ORDER BY `texts_translations`.`rank` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `texts`.`id`, `texts`.`slug`, `texts`.`type`, `texts`.`name`, `texts`.`note`, `texts`.`create_time`, `texts`.`update_time`, `texts_translations`.`id` AS `translationTextId`, `texts_translations`.`localization`, `texts_translations`.`title`, `texts_translations`.`subtitle`, `texts_translations`.`content`
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = \'cs_CZ\'
+AND `texts`.`removed` = 0
+ORDER BY `texts_translations`.`rank` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `texts`.`id`, `texts`.`slug`, `texts`.`type`, `texts`.`name`, `texts`.`note`, `texts`.`create_time`, `texts`.`update_time`, `texts_translations`.`id` AS `translationTextId`, `texts_translations`.`localization`, `texts_translations`.`title`, `texts_translations`.`subtitle`, `texts_translations`.`content`
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = \'cs_CZ\'
+AND `texts`.`removed` = 0
+ORDER BY `texts_translations`.`rank` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `texts`.`id`, `texts`.`slug`, `texts`.`type`, `texts`.`name`, `texts`.`note`, `texts`.`create_time`, `texts`.`update_time`, `texts_translations`.`id` AS `translationTextId`, `texts_translations`.`localization`, `texts_translations`.`title`, `texts_translations`.`subtitle`, `texts_translations`.`content`
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = :texts_translations.localization:
+AND `texts`.`removed` = :texts.removed:
+ORDER BY `texts_translations`.`rank` ASC', [...], false)
+ 5 APPPATH\Models\Text\TextModel.php(314): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Content\ContentController.php(47): App\Models\Text\TextModel->getRecord()
+ 7 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Content\ContentController->get()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Content\ContentController))
+ 9 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-04 16:48:08 --> mysqli_sql_exception: Column 'id' in order clause is ambiguous in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT COUNT(te...', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(te...')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(te...')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(te...', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Text\TextModel.php(311): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Helpers\PaginationHelper.php(41): App\Models\Text\TextModel->getRecord()
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Text\TextController.php(62): App\Helpers\PaginationHelper::createPagination(Object(CodeIgniter\HTTP\IncomingRequest), Object(App\Models\Text\TextModel))
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Text\TextController->get()
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-06-04 16:48:08 --> Column 'id' in order clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT COUNT(texts.id) AS count
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = \'cs_CZ\'
+AND `texts`.`removed` = 0
+ORDER BY `id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(texts.id) AS count
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = \'cs_CZ\'
+AND `texts`.`removed` = 0
+ORDER BY `id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(texts.id) AS count
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = \'cs_CZ\'
+AND `texts`.`removed` = 0
+ORDER BY `id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(texts.id) AS count
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = :texts_translations.localization:
+AND `texts`.`removed` = :texts.removed:
+ORDER BY `id` DESC', [...], false)
+ 5 APPPATH\Models\Text\TextModel.php(311): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Helpers\PaginationHelper.php(41): App\Models\Text\TextModel->getRecord()
+ 7 APPPATH\Controllers\Text\TextController.php(62): App\Helpers\PaginationHelper::createPagination(Object(CodeIgniter\HTTP\IncomingRequest), Object(App\Models\Text\TextModel))
+ 8 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Text\TextController->get()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+10 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-04 16:48:49 --> mysqli_sql_exception: Unknown column 'texts_tranlation.id' in 'order clause' in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT COUNT(te...', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(te...')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(te...')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(te...', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Text\TextModel.php(311): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Helpers\PaginationHelper.php(41): App\Models\Text\TextModel->getRecord()
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Text\TextController.php(62): App\Helpers\PaginationHelper::createPagination(Object(CodeIgniter\HTTP\IncomingRequest), Object(App\Models\Text\TextModel), 'texts_tranlatio...', 'DESC')
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Text\TextController->get()
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-06-04 16:48:49 --> Unknown column 'texts_tranlation.id' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT COUNT(texts.id) AS count
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = \'cs_CZ\'
+AND `texts`.`removed` = 0
+ORDER BY `texts_tranlation`.`id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(texts.id) AS count
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = \'cs_CZ\'
+AND `texts`.`removed` = 0
+ORDER BY `texts_tranlation`.`id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(texts.id) AS count
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = \'cs_CZ\'
+AND `texts`.`removed` = 0
+ORDER BY `texts_tranlation`.`id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(texts.id) AS count
+FROM `texts`
+JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts_translations`.`localization` = :texts_translations.localization:
+AND `texts`.`removed` = :texts.removed:
+ORDER BY `texts_tranlation`.`id` DESC', [...], false)
+ 5 APPPATH\Models\Text\TextModel.php(311): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Helpers\PaginationHelper.php(41): App\Models\Text\TextModel->getRecord()
+ 7 APPPATH\Controllers\Text\TextController.php(62): App\Helpers\PaginationHelper::createPagination(Object(CodeIgniter\HTTP\IncomingRequest), Object(App\Models\Text\TextModel), 'texts_tranlation.id', 'DESC')
+ 8 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Text\TextController->get()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+10 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

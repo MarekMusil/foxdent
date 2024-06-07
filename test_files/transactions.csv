@@ -1,0 +1,3 @@
+"ID operace";"Datum";"Objem";"Měna";"Protiúčet";"Název protiúčtu";"Kód banky";"Název banky";"KS";"VS";"SS";"Poznámka";"Zpráva pro příjemce";"Typ";"Provedl";"Upřesnění";"BIC";"ID pokynu"
+"23629012914";"03.01.2021";"-301,29";"CZK";"2000295813";"";"2010";"Fio banka, a.s.";"";"1201201261";"";"PLATBA ZA VP201201261";"PLATBA ZA VP201201261";"Platba převodem uvnitř banky";"Musil, David";"";"";"28600063364"
+"33829555714";"06.01.2021";"681,67";"CZK";"2000295813";"";"6210";"Mbank";"";"1201201261";"";"TEST";"TEST1111";"Platba převodem uvnitř banky";"Nový, Marek";"";"";"33610066674"

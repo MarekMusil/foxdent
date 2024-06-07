@@ -1,0 +1,94 @@
+CRITICAL - 2024-05-28 10:54:34 --> Undefined variable $file
+in APPPATH\Controllers\Test\TestController.php on line 22.
+ 1 APPPATH\Controllers\Test\TestController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $file', 'C:\\laragon\\www\\SMALL_PROJECTS\\empty_ci4\\v1\\app\\Controllers\\Test\\TestController.php', 22)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:03:03 --> Class "App\Controllers\Test\DateTime" not found
+in APPPATH\Controllers\Test\TestController.php on line 28.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:04:02 --> Class "App\Controllers\Test\DOMDocument" not found
+in APPPATH\Controllers\Test\TestController.php on line 72.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:05:52 --> Undefined constant "App\Controllers\Test\FIO_PAYMENT_BANK_ACCOUNT"
+in APPPATH\Controllers\Test\TestController.php on line 94.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:06:55 --> DOMDocument::save(./temp/data_xml/fio_payments.xml): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Test\TestController.php on line 122.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'DOMDocument::save(./temp/data_xml/fio_payments.xml): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\SMALL_PROJECTS\\empty_ci4\\v1\\app\\Controllers\\Test\\TestController.php', 122)
+ 2 APPPATH\Controllers\Test\TestController.php(122): DOMDocument->save('./temp/data_xml/fio_payments.xml')
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:07:37 --> DOMDocument::save(./temp/data_xml/fio_payments.xml): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Test\TestController.php on line 122.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'DOMDocument::save(./temp/data_xml/fio_payments.xml): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\SMALL_PROJECTS\\empty_ci4\\v1\\app\\Controllers\\Test\\TestController.php', 122)
+ 2 APPPATH\Controllers\Test\TestController.php(122): DOMDocument->save('./temp/data_xml/fio_payments.xml')
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:08:42 --> Undefined constant "App\Controllers\Test\FIO_API_URL"
+in APPPATH\Controllers\Test\TestController.php on line 124.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:28:40 --> Class "App\Controllers\Test\CURLFile" not found
+in APPPATH\Controllers\Test\TestController.php on line 126.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:28:55 --> Undefined constant "App\Controllers\Test\FIO_API_TOKEN"
+in APPPATH\Controllers\Test\TestController.php on line 132.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:29:28 --> Undefined variable $__alert
+in APPPATH\Controllers\Test\TestController.php on line 164.
+ 1 APPPATH\Controllers\Test\TestController.php(164): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $__alert', 'C:\\laragon\\www\\SMALL_PROJECTS\\empty_ci4\\v1\\app\\Controllers\\Test\\TestController.php', 164)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:30:36 --> Call to undefined method App\Controllers\Test\TestController::respond()
+in APPPATH\Controllers\Test\TestController.php on line 23.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:30:42 --> Call to undefined method App\Controllers\Test\TestController::respond()
+in APPPATH\Controllers\Test\TestController.php on line 23.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:33:37 --> fopen(../test_files/bankTransactions.csv): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Test\TestController.php on line 24.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(../test_files/bankTransactions.csv): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\SMALL_PROJECTS\\empty_ci4\\v1\\app\\Controllers\\Test\\TestController.php', 24)
+ 2 APPPATH\Controllers\Test\TestController.php(24): fopen('../test_files/bankTransactions.csv', 'r')
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-28 11:39:02 --> fopen(../test_files/bankTransactions.csv): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Test\TestController.php on line 24.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(../test_files/bankTransactions.csv): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\SMALL_PROJECTS\\empty_ci4\\v1\\app\\Controllers\\Test\\TestController.php', 24)
+ 2 APPPATH\Controllers\Test\TestController.php(24): fopen('../test_files/bankTransactions.csv', 'r')
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Test\TestController->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Test\TestController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

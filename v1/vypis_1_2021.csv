@@ -1,0 +1,13 @@
+"Výpis č. 1/2021 z účtu ""2301614881/2010"""
+"Majitel účtu: Davmo Software s.r.o., Podbabská 81/17, Praha 6 Bubeneč, 16000, Česká republika"
+"Vytvořeno v aplikaci Internetbanking 2.0: 15.05.2024 08:33:12"
+"Období: 01.01.2021 - 31.01.2021"
+"Počáteční stav účtu k 01.01.2021: 308182,83 CZK"
+"Koncový stav účtu k 31.01.2021: 266182,51 CZK"
+"Suma příjmů: +7955,75 CZK"
+"Suma výdajů: -49956,07 CZK"
+
+"ID operace";"Datum";"Objem";"Měna";"Protiúčet";"Název protiúčtu";"Kód banky";"Název banky";"KS";"VS";"SS";"Poznámka";"Zpráva pro příjemce";"Typ";"Provedl";"Upřesnění";"Poznámka";"BIC";"ID pokynu"
+"23629012914";"03.01.2021";"-301,29";"CZK";"2000295813";"";"2010";"Fio banka, a.s.";"";"1201201261";"";"";"PLATBA ZA VP201201261";"Platba převodem uvnitř banky";"Musil, David";"";"PLATBA ZA VP201201261";"";"28600063364"
+"23629305623";"04.01.2021";"-99";"CZK";"";"Davmo, Fio MC Business Contactless CZK";"";"";"";"2572";"";"Nákup: AWS EMEA,  5 Rue Plaetis, aws.amazon.co, L2338, LUX, dne 3.1.2021, částka  4.50 USD";"Nákup: AWS EMEA,  5 Rue Plaetis, aws.amazon.co, L2338, LUX, dne 3.1.2021, částka  4.50 USD";"Karetní transakce";"Musil, David";"";"Nákup: AWS EMEA,  5 Rue Plaetis, aws.amazon.co, L2338, LUX, dne 3.1.2021, částka  4.50 USD";"";"28601279212"
+"23634052872";"10.01.2021";"-3625";"CZK";"51-2126590287";"";"0100";"Komerční banka a.s.";"0308";"6190371";"";"nájemné, kancelář Podbabská";"nájemné Davmo Software s.r.o.";"Bezhotovostní platba";"";"";"nájemné, kancelář 01/2021";"";"28622223030"

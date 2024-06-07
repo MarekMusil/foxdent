@@ -1,0 +1,169 @@
+CRITICAL - 2024-06-05 08:51:58 --> Undefined array key "id"
+in APPPATH\Models\Text\TextModel.php on line 578.
+ 1 APPPATH\Models\Text\TextModel.php(578): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Text\\TextModel.php', 578)
+ 2 APPPATH\Controllers\System\SystemOptionController.php(32): App\Models\Text\TextModel->getCacheData('select-option-group-by-type')
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\System\SystemOptionController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\System\SystemOptionController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-05 08:54:34 --> Undefined array key "company_name"
+in APPPATH\Models\Text\TextModel.php on line 582.
+ 1 APPPATH\Models\Text\TextModel.php(582): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "company_name"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Text\\TextModel.php', 582)
+ 2 APPPATH\Controllers\System\SystemOptionController.php(32): App\Models\Text\TextModel->getCacheData('select-option-group-by-type')
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\System\SystemOptionController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\System\SystemOptionController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-05 10:15:33 --> Undefined property: stdClass::$textId
+in APPPATH\Models\Text\TextModel.php on line 401.
+ 1 APPPATH\Models\Text\TextModel.php(401): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$textId', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Text\\TextModel.php', 401)
+ 2 APPPATH\Controllers\Text\TextController.php(98): App\Models\Text\TextModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Text\TextController->getServices()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-05 10:35:24 --> Undefined variable $allErrorData
+in APPPATH\Controllers\Text\TextController.php on line 284.
+ 1 APPPATH\Controllers\Text\TextController.php(284): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allErrorData', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Text\\TextController.php', 284)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Text\TextController->updateServices()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-05 11:00:30 --> mysqli_sql_exception: Unknown column 'type' in 'where clause' in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `id`\nFRO...', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`\nFRO...')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`\nFRO...')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `id`\nFRO...', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Text\TextModel.php(206): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Text\TextController.php(156): App\Models\Text\TextModel->isValidTypeForText(45, '2')
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Text\TextController->create()
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-05 11:00:30 --> Unknown column 'type' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `id`
+FROM `texts_translations`
+WHERE `text_id` = 45
+AND `type` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`
+FROM `texts_translations`
+WHERE `text_id` = 45
+AND `type` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`
+FROM `texts_translations`
+WHERE `text_id` = 45
+AND `type` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `id`
+FROM `texts_translations`
+WHERE `text_id` = :text_id:
+AND `type` = :type:', [...], false)
+ 5 APPPATH\Models\Text\TextModel.php(206): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Text\TextController.php(156): App\Models\Text\TextModel->isValidTypeForText(45, '2')
+ 7 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Text\TextController->create()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+ 9 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-05 12:09:45 --> mysqli_sql_exception: Unknown column 'ASC' in 'order clause' in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `texts`....', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `texts`....')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `texts`....')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `texts`....', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Text\TextModel.php(346): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Text\TextController.php(101): App\Models\Text\TextModel->getRecord()
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Text\TextController->getServices()
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-05 12:09:45 --> Unknown column 'ASC' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `texts`.`id`, `texts`.`slug`, `texts`.`rank`, `texts`.`type`, `texts`.`name`, `texts`.`note`, `texts`.`create_time`, `texts`.`update_time`, `texts_translations`.`id` AS `translationTextId`, `texts_translations`.`localization`, `texts_translations`.`title`, `texts_translations`.`subtitle`, `texts_translations`.`content`
+FROM `texts`
+LEFT JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts`.`type` = 1
+AND `texts`.`removed` = 0
+ORDER BY `ASC` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `texts`.`id`, `texts`.`slug`, `texts`.`rank`, `texts`.`type`, `texts`.`name`, `texts`.`note`, `texts`.`create_time`, `texts`.`update_time`, `texts_translations`.`id` AS `translationTextId`, `texts_translations`.`localization`, `texts_translations`.`title`, `texts_translations`.`subtitle`, `texts_translations`.`content`
+FROM `texts`
+LEFT JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts`.`type` = 1
+AND `texts`.`removed` = 0
+ORDER BY `ASC` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `texts`.`id`, `texts`.`slug`, `texts`.`rank`, `texts`.`type`, `texts`.`name`, `texts`.`note`, `texts`.`create_time`, `texts`.`update_time`, `texts_translations`.`id` AS `translationTextId`, `texts_translations`.`localization`, `texts_translations`.`title`, `texts_translations`.`subtitle`, `texts_translations`.`content`
+FROM `texts`
+LEFT JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts`.`type` = 1
+AND `texts`.`removed` = 0
+ORDER BY `ASC` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `texts`.`id`, `texts`.`slug`, `texts`.`rank`, `texts`.`type`, `texts`.`name`, `texts`.`note`, `texts`.`create_time`, `texts`.`update_time`, `texts_translations`.`id` AS `translationTextId`, `texts_translations`.`localization`, `texts_translations`.`title`, `texts_translations`.`subtitle`, `texts_translations`.`content`
+FROM `texts`
+LEFT JOIN `texts_translations` ON `texts`.`id` = `texts_translations`.`text_id`
+WHERE `texts`.`type` = :texts.type:
+AND `texts`.`removed` = :texts.removed:
+ORDER BY `ASC` ASC', [...], false)
+ 5 APPPATH\Models\Text\TextModel.php(346): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Text\TextController.php(101): App\Models\Text\TextModel->getRecord()
+ 7 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Text\TextController->getServices()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+ 9 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-05 12:12:36 --> App\Controllers\Text\TextController::getServices(): Return value must be of type object, none returned
+in APPPATH\Controllers\Text\TextController.php on line 93.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Text\TextController->getServices()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-05 12:17:58 --> Undefined property: stdClass::$translatinTextId
+in APPPATH\Models\Text\TextModel.php on line 435.
+ 1 APPPATH\Models\Text\TextModel.php(435): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$translatinTextId', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Text\\TextModel.php', 435)
+ 2 APPPATH\Controllers\Text\TextController.php(111): App\Models\Text\TextModel->getRecord()
+ 3 APPPATH\Controllers\Text\TextController.php(92): App\Controllers\Text\TextController->getByType(1)
+ 4 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Text\TextController->getServices()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+ 6 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-05 13:36:28 --> mysqli_sql_exception: Column 'subtitle' cannot be null in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `te...', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `te...')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `te...')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `te...', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Text\TextModel.php(540): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Text\TextController.php(179): App\Models\Text\TextModel->createRecord()
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Text\TextController->create()
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2024-06-05 13:38:30 --> mysqli_sql_exception: Column 'subtitle' cannot be null in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `te...', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `te...')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `te...')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `te...', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Text\TextModel.php(540): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Text\TextController.php(179): App\Models\Text\TextModel->createRecord()
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Text\TextController->create()
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-05 13:42:44 --> Undefined array key "textRank"
+in APPPATH\Controllers\Text\TextController.php on line 166.
+ 1 APPPATH\Controllers\Text\TextController.php(166): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "textRank"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Text\\TextController.php', 166)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Text\TextController->create()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-05 14:56:48 --> Undefined array key "office_hours_dental_hygiene	"
+in APPPATH\Models\ContactData\ContactDataModel.php on line 62.
+ 1 APPPATH\Models\ContactData\ContactDataModel.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "office_hours_dental_hygiene	"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\ContactData\\ContactDataModel.php', 62)
+ 2 APPPATH\Controllers\ContactData\ContactDataController.php(30): App\Models\ContactData\ContactDataModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\ContactData\ContactDataController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ContactData\ContactDataController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

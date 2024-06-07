@@ -1,0 +1,191 @@
+CRITICAL - 2024-05-31 15:10:16 --> Class "App\Models\System\LogRequestModel" not found
+in APPPATH\Controllers\BaseController.php on line 57.
+ 1 APPPATH\Controllers\Error\ErrorController.php(11): App\Controllers\BaseController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Error\ErrorController->__construct()
+ 3 SYSTEMPATH\CodeIgniter.php(960): CodeIgniter\CodeIgniter->createController()
+ 4 SYSTEMPATH\CodeIgniter.php(385): CodeIgniter\CodeIgniter->display404errors(Object(CodeIgniter\Exceptions\PageNotFoundException))
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-31 15:12:40 --> mysqli_sql_exception: Unknown column 'users.cashdesk_id' in 'field list' in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `users`....', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`....')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`....')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `users`....', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\User\UserModel.php(736): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Account\AccountController.php(64): App\Models\User\UserModel->getRecord()
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Account\AccountController->checkLogin()
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Account\AccountController))
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-31 15:12:40 --> Unknown column 'users.cashdesk_id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `users`.`id`, `users`.`role_id`, `users`.`cashdesk_id`, `users`.`slug`, `users`.`email`, `users`.`active`, `users`.`create_time`, `users`.`update_time`, `users`.`name`, `users`.`pin`, `user_roles`.`name` AS `role_name`
+FROM `users`
+LEFT JOIN `user_roles` ON `users`.`role_id` = `user_roles`.`id`
+WHERE `users`.`id` = \'1\'
+AND `users`.`removed` = 0
+ORDER BY `users`.`id` ASC
+ LIMIT 10', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`.`id`, `users`.`role_id`, `users`.`cashdesk_id`, `users`.`slug`, `users`.`email`, `users`.`active`, `users`.`create_time`, `users`.`update_time`, `users`.`name`, `users`.`pin`, `user_roles`.`name` AS `role_name`
+FROM `users`
+LEFT JOIN `user_roles` ON `users`.`role_id` = `user_roles`.`id`
+WHERE `users`.`id` = \'1\'
+AND `users`.`removed` = 0
+ORDER BY `users`.`id` ASC
+ LIMIT 10')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`.`id`, `users`.`role_id`, `users`.`cashdesk_id`, `users`.`slug`, `users`.`email`, `users`.`active`, `users`.`create_time`, `users`.`update_time`, `users`.`name`, `users`.`pin`, `user_roles`.`name` AS `role_name`
+FROM `users`
+LEFT JOIN `user_roles` ON `users`.`role_id` = `user_roles`.`id`
+WHERE `users`.`id` = \'1\'
+AND `users`.`removed` = 0
+ORDER BY `users`.`id` ASC
+ LIMIT 10')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `users`.`id`, `users`.`role_id`, `users`.`cashdesk_id`, `users`.`slug`, `users`.`email`, `users`.`active`, `users`.`create_time`, `users`.`update_time`, `users`.`name`, `users`.`pin`, `user_roles`.`name` AS `role_name`
+FROM `users`
+LEFT JOIN `user_roles` ON `users`.`role_id` = `user_roles`.`id`
+WHERE `users`.`id` = :users.id:
+AND `users`.`removed` = :users.removed:
+ORDER BY `users`.`id` ASC
+ LIMIT 10', [...], false)
+ 5 APPPATH\Models\User\UserModel.php(736): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Account\AccountController.php(64): App\Models\User\UserModel->getRecord()
+ 7 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Account\AccountController->checkLogin()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Account\AccountController))
+ 9 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 15:13:13 --> Undefined property: stdClass::$cashdesk_id
+in APPPATH\Models\User\UserModel.php on line 842.
+ 1 APPPATH\Models\User\UserModel.php(842): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$cashdesk_id', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\User\\UserModel.php', 842)
+ 2 APPPATH\Controllers\Account\AccountController.php(64): App\Models\User\UserModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Account\AccountController->checkLogin()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Account\AccountController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 15:13:35 --> Class "App\Helpers\CustomHelper" not found
+in APPPATH\Models\User\UserModel.php on line 352.
+ 1 APPPATH\Models\User\UserModel.php(965): App\Models\User\UserModel->createCheckLogin([...])
+ 2 APPPATH\Controllers\Account\AccountController.php(81): App\Models\User\UserModel->checkLogin([...])
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Account\AccountController->checkLogin()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Account\AccountController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 15:15:13 --> "selectedFromUsers" is not a valid rule.
+in SYSTEMPATH\Validation\Validation.php on line 286.
+ 1 SYSTEMPATH\Validation\Validation.php(286): CodeIgniter\Validation\Exceptions\ValidationException::forRuleNotFound('selectedFromUsers')
+ 2 SYSTEMPATH\Validation\Validation.php(182): CodeIgniter\Validation\Validation->processRules('userId', 'userId', 1, [...], [...])
+ 3 APPPATH\Controllers\Account\AccountController.php(127): CodeIgniter\Validation\Validation->run([...])
+ 4 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Account\AccountController->login()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Account\AccountController))
+ 6 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 15:16:44 --> "selectedFromUsers" is not a valid rule.
+in SYSTEMPATH\Validation\Validation.php on line 286.
+ 1 SYSTEMPATH\Validation\Validation.php(286): CodeIgniter\Validation\Exceptions\ValidationException::forRuleNotFound('selectedFromUsers')
+ 2 SYSTEMPATH\Validation\Validation.php(182): CodeIgniter\Validation\Validation->processRules('userId', 'userId', 1, [...], [...])
+ 3 APPPATH\Controllers\Account\AccountController.php(127): CodeIgniter\Validation\Validation->run([...])
+ 4 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Account\AccountController->login()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Account\AccountController))
+ 6 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 15:16:59 --> "selectedFromUsers" is not a valid rule.
+in SYSTEMPATH\Validation\Validation.php on line 286.
+ 1 SYSTEMPATH\Validation\Validation.php(286): CodeIgniter\Validation\Exceptions\ValidationException::forRuleNotFound('selectedFromUsers')
+ 2 SYSTEMPATH\Validation\Validation.php(182): CodeIgniter\Validation\Validation->processRules('userId', 'userId', 1, [...], [...])
+ 3 APPPATH\Controllers\Account\AccountController.php(127): CodeIgniter\Validation\Validation->run([...])
+ 4 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Account\AccountController->login()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Account\AccountController))
+ 6 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 15:18:14 --> Class "App\Models\Column\ColumnModel" not found
+in APPPATH\Controllers\User\UserController.php on line 36.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\User\UserController->get()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 15:31:32 --> Undefined property: stdClass::$update_time
+in APPPATH\Models\Employee\EmployeeModel.php on line 257.
+ 1 APPPATH\Models\Employee\EmployeeModel.php(257): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$update_time', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Employee\\EmployeeModel.php', 257)
+ 2 APPPATH\Controllers\Employee\EmployeeController.php(51): App\Models\Employee\EmployeeModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 15:32:01 --> Undefined property: stdClass::$company_id
+in APPPATH\Models\Employee\EmployeeModel.php on line 262.
+ 1 APPPATH\Models\Employee\EmployeeModel.php(262): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$company_id', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Employee\\EmployeeModel.php', 262)
+ 2 APPPATH\Controllers\Employee\EmployeeController.php(51): App\Models\Employee\EmployeeModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 15:33:23 --> Undefined array key "employees"
+in APPPATH\Controllers\Employee\EmployeeController.php on line 55.
+ 1 APPPATH\Controllers\Employee\EmployeeController.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "employees"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Employee\\EmployeeController.php', 55)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 15:39:14 --> Undefined property: stdClass::$value
+in APPPATH\Models\Pricelist\PricelistModel.php on line 238.
+ 1 APPPATH\Models\Pricelist\PricelistModel.php(238): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$value', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Pricelist\\PricelistModel.php', 238)
+ 2 APPPATH\Controllers\Pricelist\PricelistController.php(51): App\Models\Pricelist\PricelistModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Pricelist\PricelistController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pricelist\PricelistController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 16:00:06 --> Call to undefined method App\Models\Employee\EmployeeModel::createRecord
+in SYSTEMPATH\Model.php on line 838.
+ 1 APPPATH\Controllers\Employee\EmployeeController.php(120): CodeIgniter\Model->__call('createRecord', [])
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->create()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 16:03:22 --> Call to undefined method App\Models\Employee\EmployeeModel::getEmployeeId
+in SYSTEMPATH\Model.php on line 838.
+ 1 APPPATH\Controllers\Employee\EmployeeController.php(127): CodeIgniter\Model->__call('getEmployeeId', [])
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->create()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 16:04:08 --> Call to undefined method App\Models\Employee\EmployeeModel::setAppName
+in SYSTEMPATH\Model.php on line 838.
+ 1 APPPATH\Controllers\Employee\EmployeeController.php(138): CodeIgniter\Model->__call('setAppName', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->update('8')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 16:04:20 --> Cannot access offset of type string on string
+in APPPATH\Models\Employee\EmployeeModel.php on line 337.
+ 1 APPPATH\Controllers\Employee\EmployeeController.php(183): App\Models\Employee\EmployeeModel->updateRecord()
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->update('8')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 16:05:49 --> You must set the database table to be used with your query.
+in SYSTEMPATH\Database\BaseConnection.php on line 883.
+ 1 APPPATH\Models\Employee\EmployeeModel.php(328): CodeIgniter\Database\BaseConnection->table(null)
+ 2 APPPATH\Controllers\Employee\EmployeeController.php(183): App\Models\Employee\EmployeeModel->updateRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->update('8')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 16:18:10 --> Undefined constant "App\Controllers\System\IMPLICIT_DATA_FORMAT"
+in APPPATH\Controllers\System\SystemOptionController.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\System\SystemOptionController->get()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\System\SystemOptionController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 16:18:36 --> Undefined constant "App\Models\User\CACHE_PATH"
+in APPPATH\Models\User\UserModel.php on line 1046.
+ 1 APPPATH\Controllers\System\SystemOptionController.php(24): App\Models\User\UserModel->getCacheData('select-option')
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\System\SystemOptionController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\System\SystemOptionController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-31 16:18:56 --> Class "App\Controllers\System\MenuModel" not found
+in APPPATH\Controllers\System\SystemOptionController.php on line 29.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\System\SystemOptionController->get()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\System\SystemOptionController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
