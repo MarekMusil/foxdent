@@ -36,7 +36,7 @@ class CustomHelper
         $text = strtolower($text);
         $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);
         $text = preg_replace('/[^a-zA-Z0-9_\s]/', '', $text);
-        $text = str_replace(' ', '_', $text);
+        $text = str_replace(' ', '-', $text);
 
         return $text;
     }
