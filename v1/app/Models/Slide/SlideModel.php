@@ -273,7 +273,7 @@ class SlideModel extends Model
                         'plain' => ($row->text) != NULL ? strip_tags(htmlspecialchars_decode($row->text)) : "",
                         'plainShort' => ($row->text) != NULL ? mb_substr(strip_tags(htmlspecialchars_decode($row->text)), 0, 100) . '...' : "",
                     ],
-                    'photoImgUrl' => base_url() . '../assets/images/slides/'.$row->id.'.png',
+                    'photoImgUrl' => str_replace(API_VERSION_SLUG, '', base_url()) . '/assets/images/slides/slide' . $row->id . '.jpg?t='.time(),
                     'updateTime' => [
                         'format' => $__updateTime->format('d.m.Y H:i:s'),
                         'formatDate' => $__updateTime->format('d.m.Y'),

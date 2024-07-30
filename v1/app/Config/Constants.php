@@ -94,7 +94,8 @@ define('EVENT_PRIORITY_NORMAL', 100);
 define('EVENT_PRIORITY_HIGH', 10);
 
 define('API_VERSION_NUMBER', 1);
-define('APP_URL','https://fox.davmosoft.cz/v1/');
+define('API_VERSION_SLUG', '/v1/');
+define('APP_URL','https://cc.davmosoft.cz/v1/');
 define('APP_URL_PATH','/');
 define('CRYPT_KEY', 'E6FWr3wqFjS7yKpiLRwLKYu2Niu4OZ6Z3I7PCSAwATcnXBmjUN');
 define('DEFAULT_LOCALIZATION', 'cs_CZ');

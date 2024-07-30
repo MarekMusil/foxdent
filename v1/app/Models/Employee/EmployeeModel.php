@@ -288,7 +288,7 @@ class EmployeeModel extends Model
                     'id' => (int)$row->id,
                     'name' => $row->name,
                     'rank' => (int)$row->rank,
-                    'photoImgUrl' => base_url() . '../assets/images/employees/'.$row->id.'.png',
+                    'photoImgUrl' => base_url() . '../assets/images/employees/employee'.$row->id.'.jpg',
                     'degree' => $row->degree,
                     'text' => $row->text,
                     'education' => $row->education,

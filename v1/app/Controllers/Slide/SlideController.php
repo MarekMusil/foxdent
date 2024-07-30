@@ -189,7 +189,7 @@ class SlideController extends BaseController
 
         $file = $_FILES['file'];
 
-        $destinationPath = $uploadDirectory . $slideId . '.png';
+        $destinationPath = $uploadDirectory . 'slide'.$slideId . '.jpg';
         move_uploaded_file($file['tmp_name'], $destinationPath);
 
         return $this->respond(null, 200, lang('Response.200'));

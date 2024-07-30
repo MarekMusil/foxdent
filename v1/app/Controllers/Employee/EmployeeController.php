@@ -211,7 +211,7 @@ class EmployeeController extends BaseController
 
         $file = $_FILES['file'];
 
-        $destinationPath = $uploadDirectory . $employeeId . '.png';
+        $destinationPath = $uploadDirectory . 'employee'.$employeeId . '.jpg';
         move_uploaded_file($file['tmp_name'], $destinationPath);
 
         return $this->respond(null, 200, lang('Response.200'));
