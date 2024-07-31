@@ -262,6 +262,15 @@ class SlideModel extends Model
                 $__createTime = new DateTime($row->create_time);
                 $__updateTime = new DateTime($row->update_time);
 
+                if (file_exists('../assets/images/slides/slide'.$row->id.'.jpg'))
+                {
+                    $photoImgUrl = base_url() . '../assets/images/slides/slide'.$row->id.'.jpg';
+                }
+                else
+                {
+                    $photoImgUrl = base_url() . '../assets/images/slides/empty_image.jpg';
+                }
+
                 $slide = [
                     'id' => (int)$row->id,
                     'rank' => (int)$row->rank,
@@ -273,7 +282,7 @@ class SlideModel extends Model
                         'plain' => ($row->text) != NULL ? strip_tags(htmlspecialchars_decode($row->text)) : "",
                         'plainShort' => ($row->text) != NULL ? mb_substr(strip_tags(htmlspecialchars_decode($row->text)), 0, 100) . '...' : "",
                     ],
-                    'photoImgUrl' => str_replace(API_VERSION_SLUG, '', base_url()) . '/assets/images/slides/slide' . $row->id . '.jpg?t='.time(),
+                    'photoImgUrl' => $photoImgUrl,
                     'updateTime' => [
                         'format' => $__updateTime->format('d.m.Y H:i:s'),
                         'formatDate' => $__updateTime->format('d.m.Y'),
