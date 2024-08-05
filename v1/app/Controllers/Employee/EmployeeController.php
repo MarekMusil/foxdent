@@ -52,7 +52,7 @@ class EmployeeController extends BaseController
             $__employee->setEmployeeType($this->request->getGet('employeeType'));
         }
 
-        if ($this->request->getGet('active'))
+        if ($this->request->getGet('active') == 1 || $this->request->getGet('active') == 0)
         {
             $__employee->setActive($this->request->getGet('active'));
         }
@@ -221,19 +221,14 @@ class EmployeeController extends BaseController
 
         $file = $_FILES['file'];
 
-        $fileParts = explode('.', $file['name']);
-        $fileName = $fileParts[0];
-        $fileType = '.'.$fileParts[1];
-
         $token = CustomHelper::generateToken('alnum', 6);
-        $sluggedName = CustomHelper::createSlug($fileName);
 
-        $newName = $sluggedName . '-' . $token;
+        $name = 'employee' . $employeeId . '-' . $token;
+        $fileType = '.jpg';
 
         $singleFileData = [
             'employee_id' => $employeeId,
-            'original_name' => $fileName,
-            'name'      => $newName,
+            'name'      => $name,
             'type'      => $fileType,
             'path'      => $uploadDirectory,
         ];
@@ -243,11 +238,13 @@ class EmployeeController extends BaseController
         
         if($singleFile->createRecord() === TRUE)
         {
-            $destinationPath = $uploadDirectory . $newName . $fileType;
+            $destinationPath = $uploadDirectory . $name . $fileType;
             move_uploaded_file($file['tmp_name'], $destinationPath);
         }
 
-        return $this->respond(null, 200, lang('Response.200'));
+        $data['newPhotoImgUrl'] = base_url() . $destinationPath;
+
+        return $this->respond($data, 200, lang('Response.200'));
 
     }
 }

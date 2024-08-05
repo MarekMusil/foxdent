@@ -269,6 +269,10 @@ class SlideModel extends Model
                     'title' => $row->title,
                     'button1' => $row->button_1,
                     'button2' => $row->button_2,
+                    'active' => [
+                        'value' => (int)$row->active,
+                        'name' => (int)$row->active == 1 ? 'Ano' : 'Ne',
+                    ],
                     'text' => [
                         'html' => ($row->text) != NULL ? htmlspecialchars_decode($row->text): "",
                         'plain' => ($row->text) != NULL ? strip_tags(htmlspecialchars_decode($row->text)) : "",
@@ -292,18 +296,27 @@ class SlideModel extends Model
                 $slides[$row->id] = $slide;
             }
 
-            if (!is_null($this->slideId) && array_key_exists($this->slideId, $slides))
+            if(!empty($slides))
             {
                 $__singleFile = new SingleFileModel;
-                $__singleFile->setSlideId($this->slideId);
-                $__singleFile->setPageLimit(1);
+                $__singleFile->setSlidesId(array_keys($slides));
+                $__singleFile->setPageLimit(NULL);
                 $singleFileData = $__singleFile->getRecord();
 
                 if(!empty($singleFileData))
                 {
-                    $slides[$this->slideId]['photoImgUrl'] = base_url() . $singleFileData['path'] . $singleFileData['name'] . $singleFileData['type'];
+                    foreach ($slides as $slideId => $slide)
+                    {
+                        if(array_key_exists($slideId, $singleFileData))
+                        {
+                            $slides[$slideId]['photoImgUrl'] = base_url() . $singleFileData[$slideId]['path'] . $singleFileData[$slideId]['name'] . $singleFileData[$slideId]['type'];
+                        }
+                    }
                 }
+            }
 
+            if (!is_null($this->slideId) && array_key_exists($this->slideId, $slides))
+            {
                 return $slides[$this->slideId];
             }
         }        

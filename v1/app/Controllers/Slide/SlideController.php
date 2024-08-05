@@ -47,7 +47,7 @@ class SlideController extends BaseController
         $module = 'slides';
         $__slide = new SlideModel;
 
-        if ($this->request->getGet('active'))
+        if ($this->request->getGet('active') == 1 || $this->request->getGet('active') == 0)
         {
             $__slide->setActive($this->request->getGet('active'));
         }
@@ -91,6 +91,7 @@ class SlideController extends BaseController
             'slideButton1'  => 'permit_empty|max_length[50]',
             'slideButton2'  => 'permit_empty|max_length[50]',
             'slideText'     => 'permit_empty|',
+            'slideActive'   => 'required|in_list[0,1]',
         ];
         $validation->setRules($validationRules);
 
@@ -115,6 +116,7 @@ class SlideController extends BaseController
             'button_1'      => $inputData['slideButton1'],
             'button_2'      => $inputData['slideButton2'],
             'text'      => $inputData['slideText'],
+            'active'      => $inputData['slideActive'],
         ];
 
         $__slide = new SlideModel;
@@ -152,6 +154,7 @@ class SlideController extends BaseController
             'slideButton1'  => 'permit_empty|max_length[50]',
             'slideButton2'  => 'permit_empty|max_length[50]',
             'slideText'     => 'permit_empty|',
+            'slideActive'   => 'required|in_list[0,1]',
         ];
         $validation->setRules($validationRules);
 
@@ -168,6 +171,7 @@ class SlideController extends BaseController
             'button_1'      => $inputData['slideButton1'],
             'button_2'      => $inputData['slideButton2'],
             'text'      => $inputData['slideText'],
+            'active'      => $inputData['slideActive'],
         ];
 
         $__slide = new SlideModel;
@@ -196,19 +200,14 @@ class SlideController extends BaseController
 
         $file = $_FILES['file'];
 
-        $fileParts = explode('.', $file['name']);
-        $fileName = $fileParts[0];
-        $fileType = '.'.$fileParts[1];
-
         $token = CustomHelper::generateToken('alnum', 6);
-        $sluggedName = CustomHelper::createSlug($fileName);
 
-        $newName = $sluggedName . '-' . $token;
+        $name = 'slide' . $slideId . '-' . $token;
+        $fileType = '.jpg';
 
         $singleFileData = [
             'slide_id' => $slideId,
-            'original_name' => $fileName,
-            'name'      => $newName,
+            'name'      => $name,
             'type'      => $fileType,
             'path'      => $uploadDirectory,
         ];
@@ -218,11 +217,13 @@ class SlideController extends BaseController
         
         if($singleFile->createRecord() === TRUE)
         {
-            $destinationPath = $uploadDirectory . $newName . $fileType;
+            $destinationPath = $uploadDirectory . $name . $fileType;
             move_uploaded_file($file['tmp_name'], $destinationPath);
         }
 
-        return $this->respond(null, 200, lang('Response.200'));
+        $data['newPhotoImgUrl'] = base_url() . $destinationPath;
+
+        return $this->respond($data, 200, lang('Response.200'));
 
     }
 }

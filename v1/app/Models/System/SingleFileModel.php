@@ -26,6 +26,7 @@ class SingleFileModel extends Model
     private $appType = NULL;
     private $employeeId = NULL;
     private $slideId = NULL;
+    private $slidesId = NULL;
     private $singleFileId = NULL;
     private $singleFilesId = NULL;
     private $data = NULL;
@@ -71,6 +72,11 @@ class SingleFileModel extends Model
     public function setSlideId($slideId)
     {
         $this->slideId = $slideId;
+    }
+
+    public function setSlidesId($slidesId)
+    {
+        $this->slidesId = $slidesId;
     }
 
     public function setSingleFileId($singleFileId)
@@ -189,6 +195,11 @@ class SingleFileModel extends Model
             $builder->where('slide_id', $this->slideId);
         }
 
+        if (!is_null($this->slidesId))  
+        {
+            $builder->whereIn('slide_id', $this->slidesId);
+        }
+
         if (!is_null($this->singleFileId))  
         {
             $builder->where('id', $this->singleFileId);
@@ -249,7 +260,6 @@ class SingleFileModel extends Model
                     $singleFilee = [
                         'id' => (int)$row->id,
                         'name' => $row->name,
-                        'originalName' => $row->original_name,
                     ];
 
                     $singleFiles[$row->id] = $singleFilee;
@@ -277,7 +287,6 @@ class SingleFileModel extends Model
                     'employee' =>['id' => (int)$row->employee_id],
                     'slide' =>['id' => (int)$row->slide_id],
                     'name' => $row->name,
-                    'originalName' => $row->original_name,
                     'type' => $row->type,
                     'path' => $row->path,
                     'createTime' => [
@@ -292,9 +301,12 @@ class SingleFileModel extends Model
                 {
                     $singleFiles[$row->employee_id] = $singleFile;
                 }
-                elseif(!is_null($this->slideId))
+                elseif(!is_null($this->slideId) || !is_null($this->slidesId))
                 {
-                    $singleFiles[$row->slide_id] = $singleFile;
+                    if(!array_key_exists($this->slide_id, $singleFiles))
+                    {
+                        $singleFiles[$row->slide_id] = $singleFile;
+                    }
                 }
                 else
                 {

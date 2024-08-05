@@ -295,6 +295,10 @@ class EmployeeModel extends Model
                     'education' => $row->education,
                     'officeHours' => ($row->office_hours) != NULL ? htmlspecialchars_decode($row->office_hours): "",
                     'type' => $type,
+                    'active' => [
+                        'value' => (int)$row->active,
+                        'name' => (int)$row->active == 1 ? 'Ano' : 'Ne',
+                    ],
                     'updateTime' => [
                         'format' => $__updateTime->format('d.m.Y H:i:s'),
                         'formatDate' => $__updateTime->format('d.m.Y'),

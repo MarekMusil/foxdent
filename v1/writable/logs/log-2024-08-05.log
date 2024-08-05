@@ -1,0 +1,56 @@
+CRITICAL - 2024-08-05 11:09:17 --> Undefined variable $fileName
+in APPPATH\Controllers\Employee\EmployeeController.php on line 233.
+ 1 APPPATH\Controllers\Employee\EmployeeController.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fileName', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Employee\\EmployeeController.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->uploadPhoto('4')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-05 11:09:40 --> Undefined variable $fileName
+in APPPATH\Controllers\Employee\EmployeeController.php on line 233.
+ 1 APPPATH\Controllers\Employee\EmployeeController.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fileName', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Employee\\EmployeeController.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->uploadPhoto('4')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-05 11:09:44 --> Undefined variable $fileName
+in APPPATH\Controllers\Employee\EmployeeController.php on line 233.
+ 1 APPPATH\Controllers\Employee\EmployeeController.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fileName', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Employee\\EmployeeController.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->uploadPhoto('4')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-05 11:19:14 --> Undefined variable $fileType
+in APPPATH\Controllers\Employee\EmployeeController.php on line 248.
+ 1 APPPATH\Controllers\Employee\EmployeeController.php(248): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fileType', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Employee\\EmployeeController.php', 248)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->uploadPhoto('4')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-05 11:54:36 --> Call to undefined method App\Models\System\SingleFileModel::setSlidesId
+in SYSTEMPATH\Model.php on line 838.
+ 1 APPPATH\Models\Slide\SlideModel.php(302): CodeIgniter\Model->__call('setSlidesId', [...])
+ 2 APPPATH\Controllers\Slide\SlideController.php(56): App\Models\Slide\SlideModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Slide\SlideController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Slide\SlideController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-05 11:58:04 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 940.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(827): CodeIgniter\Database\BaseBuilder->_whereIn('slide_id', '3', false, 'AND ', null)
+ 2 APPPATH\Models\System\SingleFileModel.php(200): CodeIgniter\Database\BaseBuilder->whereIn('slide_id', '3')
+ 3 APPPATH\Models\Slide\SlideModel.php(304): App\Models\System\SingleFileModel->getRecord()
+ 4 APPPATH\Controllers\Slide\SlideController.php(38): App\Models\Slide\SlideModel->getRecord()
+ 5 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Slide\SlideController->detail('3')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Slide\SlideController))
+ 7 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-05 11:58:18 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 940.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(827): CodeIgniter\Database\BaseBuilder->_whereIn('slide_id', '3', false, 'AND ', null)
+ 2 APPPATH\Models\System\SingleFileModel.php(200): CodeIgniter\Database\BaseBuilder->whereIn('slide_id', '3')
+ 3 APPPATH\Models\Slide\SlideModel.php(304): App\Models\System\SingleFileModel->getRecord()
+ 4 APPPATH\Controllers\Slide\SlideController.php(38): App\Models\Slide\SlideModel->getRecord()
+ 5 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Slide\SlideController->detail('3')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Slide\SlideController))
+ 7 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
