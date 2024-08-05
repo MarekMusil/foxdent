@@ -80,7 +80,7 @@ class AccountController extends BaseController
 
         if ($__user->checkLogin($headerData) === FALSE)
         {
-            return $this->respond(null, 401, lang('Response.401'));
+            return $this->respond(null, 400, lang('Response.400'));
         }
 
         $loginToken =  $__user->getLoginToken();
