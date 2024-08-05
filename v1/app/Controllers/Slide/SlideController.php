@@ -10,7 +10,8 @@ use App\Models\Column\ColumnModel;
 use App\Models\Button\ButtonModel;
 use App\Models\Slide\SlideModel;
 use CodeIgniter\HTTP\Client;
-
+use App\Helpers\CustomHelper;
+use App\Models\System\SingleFileModel;
 
 class SlideController extends BaseController
 {
@@ -45,6 +46,12 @@ class SlideController extends BaseController
     {
         $module = 'slides';
         $__slide = new SlideModel;
+
+        if ($this->request->getGet('active'))
+        {
+            $__slide->setActive($this->request->getGet('active'));
+        }
+
         $pagination = PaginationHelper::createPagination($this->request, $__slide, 'rank', 'ASC');
         $slides = $__slide->getRecord();
 
@@ -182,15 +189,38 @@ class SlideController extends BaseController
         {
             return $this->respond(null, 404, lang('Response.404'));
         }
-        
+
         $__slide->setSlideId($slideId);
 
         $uploadDirectory = '../assets/images/slides/';
 
         $file = $_FILES['file'];
 
-        $destinationPath = $uploadDirectory . 'slide'.$slideId . '.jpg';
-        move_uploaded_file($file['tmp_name'], $destinationPath);
+        $fileParts = explode('.', $file['name']);
+        $fileName = $fileParts[0];
+        $fileType = '.'.$fileParts[1];
+
+        $token = CustomHelper::generateToken('alnum', 6);
+        $sluggedName = CustomHelper::createSlug($fileName);
+
+        $newName = $sluggedName . '-' . $token;
+
+        $singleFileData = [
+            'slide_id' => $slideId,
+            'original_name' => $fileName,
+            'name'      => $newName,
+            'type'      => $fileType,
+            'path'      => $uploadDirectory,
+        ];
+
+        $singleFile = new SingleFileModel;
+        $singleFile->setData($singleFileData);
+        
+        if($singleFile->createRecord() === TRUE)
+        {
+            $destinationPath = $uploadDirectory . $newName . $fileType;
+            move_uploaded_file($file['tmp_name'], $destinationPath);
+        }
 
         return $this->respond(null, 200, lang('Response.200'));
 

@@ -4,6 +4,7 @@ namespace App\Models\Employee;
 
 use CodeIgniter\Model;
 use App\Models\System\SystemUpdateModel;
+use App\Models\System\SingleFileModel;
 use DateTime;
 helper('filesystem');
 helper('file');
@@ -284,21 +285,11 @@ class EmployeeModel extends Model
                     $type['name'] = 'Dentální hygiena';
                 }
 
-                if (file_exists('../assets/images/employees/employee'.$row->id.'.jpg'))
-                {
-                    $photoImgUrl = base_url() . '../assets/images/employees/employee'.$row->id.'.jpg';
-                }
-                else
-                {
-                    $photoImgUrl = base_url() . '../assets/images/employees/empty_image.jpg';
-                }
-
-
                 $employee = [
                     'id' => (int)$row->id,
                     'name' => $row->name,
                     'rank' => (int)$row->rank,
-                    'photoImgUrl' => $photoImgUrl,
+                    'photoImgUrl' => base_url() . '../assets/images/employees/empty_image.jpg',
                     'degree' => $row->degree,
                     'text' => $row->text,
                     'education' => $row->education,
@@ -323,6 +314,16 @@ class EmployeeModel extends Model
 
             if (!is_null($this->employeeId) && array_key_exists($this->employeeId, $employees))
             {
+                $__singleFile = new SingleFileModel;
+                $__singleFile->setEmployeeId($this->employeeId);
+                $__singleFile->setPageLimit(1);
+                $singleFileData = $__singleFile->getRecord();
+
+                if(!empty($singleFileData))
+                {
+                    $employees[$this->employeeId]['photoImgUrl'] = base_url() . $singleFileData['path'] . $singleFileData['name'] . $singleFileData['type'];
+                }
+
                 return $employees[$this->employeeId];
             }
         }        

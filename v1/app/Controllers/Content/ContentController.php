@@ -37,6 +37,15 @@ class ContentController extends BaseController
 
     public function get()
     {
+        if ($this->request->getGet('localization'))
+        {
+            $localization = $this->request->getGet('localization');
+        }
+        else
+        {
+            $localization = 'cs_CZ';
+        }
+        
         $module = 'texts';
         $viewMethod = '';
         $__text = new TextModel;

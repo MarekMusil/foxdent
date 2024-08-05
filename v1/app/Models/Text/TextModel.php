@@ -32,7 +32,7 @@ class TextModel extends Model
     private $textType = NULL;
     private $data = NULL;
     private $debugMode = FALSE;
-    private $localization = NULL;
+    private $localization = 'cs_CZ';
     private $format = NULL;
     private $onlyCount = FALSE;
     private $pageLimit = 10;

@@ -10,7 +10,8 @@ use App\Models\Column\ColumnModel;
 use App\Models\Button\ButtonModel;
 use App\Models\Employee\EmployeeModel;
 use CodeIgniter\HTTP\Client;
-
+use App\Helpers\CustomHelper;
+use App\Models\System\SingleFileModel;
 
 class EmployeeController extends BaseController
 {
@@ -49,6 +50,11 @@ class EmployeeController extends BaseController
         if ($this->request->getGet('employeeType'))
         {
             $__employee->setEmployeeType($this->request->getGet('employeeType'));
+        }
+
+        if ($this->request->getGet('active'))
+        {
+            $__employee->setActive($this->request->getGet('active'));
         }
 
         $pagination = PaginationHelper::createPagination($this->request, $__employee, 'rank', 'ASC');
@@ -93,6 +99,7 @@ class EmployeeController extends BaseController
             'employeeEducation'         => 'permit_empty|max_length[100]',
             'employeeOfficeHours'       => 'permit_empty|max_length[255]',
             'employeeType'              => 'permit_empty|numeric',
+            'employeeActive'            => 'required|in_list[0,1]',
         ];
         $validation->setRules($validationRules);
 
@@ -119,6 +126,7 @@ class EmployeeController extends BaseController
             'education'      => $inputData['employeeEducation'],
             'office_hours'      => htmlspecialchars($inputData['employeeOfficeHours']),
             'type'      => $inputData['employeeType'],
+            'active'      => $inputData['employeeActive'],
         ];
 
         $__employee = new EmployeeModel;
@@ -158,6 +166,7 @@ class EmployeeController extends BaseController
             'employeeEducation'         => 'permit_empty|max_length[100]',
             'employeeOfficeHours'       => 'permit_empty|max_length[255]',
             'employeeType'              => 'permit_empty|numeric',
+            'employeeActive'            => 'required|in_list[0,1]',
         ];
         $validation->setRules($validationRules);
 
@@ -183,6 +192,7 @@ class EmployeeController extends BaseController
             'education'      => $inputData['employeeEducation'],
             'office_hours'      => htmlspecialchars($inputData['employeeOfficeHours']),
             'type'      => $inputData['employeeType'],
+            'active'      => $inputData['employeeActive'],
         ];
 
         $__employee = new EmployeeModel;
@@ -204,15 +214,38 @@ class EmployeeController extends BaseController
         {
             return $this->respond(null, 404, lang('Response.404'));
         }
-        
+
         $__employee->setEmployeeId($employeeId);
 
         $uploadDirectory = '../assets/images/employees/';
 
         $file = $_FILES['file'];
 
-        $destinationPath = $uploadDirectory . 'employee'.$employeeId . '.jpg';
-        move_uploaded_file($file['tmp_name'], $destinationPath);
+        $fileParts = explode('.', $file['name']);
+        $fileName = $fileParts[0];
+        $fileType = '.'.$fileParts[1];
+
+        $token = CustomHelper::generateToken('alnum', 6);
+        $sluggedName = CustomHelper::createSlug($fileName);
+
+        $newName = $sluggedName . '-' . $token;
+
+        $singleFileData = [
+            'employee_id' => $employeeId,
+            'original_name' => $fileName,
+            'name'      => $newName,
+            'type'      => $fileType,
+            'path'      => $uploadDirectory,
+        ];
+
+        $singleFile = new SingleFileModel;
+        $singleFile->setData($singleFileData);
+        
+        if($singleFile->createRecord() === TRUE)
+        {
+            $destinationPath = $uploadDirectory . $newName . $fileType;
+            move_uploaded_file($file['tmp_name'], $destinationPath);
+        }
 
         return $this->respond(null, 200, lang('Response.200'));
 

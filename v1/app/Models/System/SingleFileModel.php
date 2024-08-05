@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Models\Slide;
+namespace App\Models\System;
 
 use CodeIgniter\Model;
 use App\Models\System\SystemUpdateModel;
-use App\Models\System\SingleFileModel;
 use DateTime;
 helper('filesystem');
 helper('file');
 //use App\Helpers\CustomHelper;
 
-class SlideModel extends Model
+class SingleFileModel extends Model
 {
     public function __construct()
     {
@@ -24,10 +23,11 @@ class SlideModel extends Model
     }
 
     private $accessRules = FALSE;
-    private $active = NULL;
     private $appType = NULL;
+    private $employeeId = NULL;
     private $slideId = NULL;
-    private $slidesId = NULL;
+    private $singleFileId = NULL;
+    private $singleFilesId = NULL;
     private $data = NULL;
     private $debugMode = FALSE;
     private $format = NULL;
@@ -36,12 +36,12 @@ class SlideModel extends Model
     private $pageNumber = 1;
     private $removed = NULL;
     private $searchQuery = NULL;
-    private $sortBy = 'id';
-    private $sortOrder = 'ASC';
+    private $sortBy = 'create_time';
+    private $sortOrder = 'DESC';
     private $withRemoved = FALSE;
-    protected $sortByOptions = ['id', 'rank'];
+    protected $sortByOptions = ['id', 'create_time'];
     protected $sortOrderOptions = ['ASC', 'DESC'];
-    protected $table = 'slides';
+    protected $table = 'single_files';
 
     public function getPageLimit()
     {
@@ -53,14 +53,9 @@ class SlideModel extends Model
         return $this->pageNumber;
     }
 
-    public function getSlideId()
+    public function getSingleFileId()
     {
-        return $this->slideId;
-    }
-
-    public function setActive($bool)
-    {
-        $this->active = $bool;
+        return $this->singleFileId;
     }
 
     public function setAppType($bool)
@@ -68,14 +63,24 @@ class SlideModel extends Model
         $this->appType = $bool;
     }
 
+    public function setEmployeeId($employeeId)
+    {
+        $this->employeeId = $employeeId;
+    }
+
     public function setSlideId($slideId)
     {
         $this->slideId = $slideId;
     }
 
-    public function setSlidesId($slidesId)
+    public function setSingleFileId($singleFileId)
     {
-        $this->slidesId = $slidesId;
+        $this->singleFileId = $singleFileId;
+    }
+
+    public function setSingleFilesId($singleFilesId)
+    {
+        $this->singleFilesId = $singleFilesId;
     }
     
     public function setData($data)
@@ -139,11 +144,11 @@ class SlideModel extends Model
         $this->withRemoved = $bool;
     }
     
-    public function existsId($slideId, $removed = 0)
+    public function existsId($singleFileId, $removed = 0)
     {
         $builder = $this->db->table($this->table);
         $builder->select('id');
-        $builder->where('id', $slideId);
+        $builder->where('id', $singleFileId);
         $builder->where('removed', $removed);
         $q = $builder->get()->getResult();
 
@@ -163,7 +168,7 @@ class SlideModel extends Model
     public function getRecord()
     {
         $builder = $this->db->table($this->table);
-        $slides = [];
+        $singleFiles = [];
 
         if ($this->onlyCount === FALSE)
         {
@@ -172,31 +177,36 @@ class SlideModel extends Model
         else
         {
             $builder->select('COUNT(id) AS count');
-        }        
+        }     
+        
+        if (!is_null($this->employeeId))  
+        {
+            $builder->where('employee_id', $this->employeeId);
+        }
 
         if (!is_null($this->slideId))  
         {
-            $builder->where('id', $this->slideId);
+            $builder->where('slide_id', $this->slideId);
         }
 
-        if (!is_null($this->slidesId))  
+        if (!is_null($this->singleFileId))  
         {
-            $builder->whereIn('id', $this->slidesId);
+            $builder->where('id', $this->singleFileId);
+        }
+
+        if (!is_null($this->singleFilesId))  
+        {
+            $builder->whereIn('id', $this->singleFilesId);
         }
 
         if (!is_null($this->searchQuery))
         {
-            $builder->like('title', $this->searchQuery);
+            $builder->like('name', $this->searchQuery);
         }
 
-        if (!is_null($this->active))
+        if ($this->accessRules === TRUE && !is_null($this->singleFilesId))
         {
-            $builder->where('active', $this->active);
-        }
-
-        if ($this->accessRules === TRUE && !is_null($this->slidesId))
-        {
-            $builder->whereIn('id', $this->slidesId);
+            $builder->whereIn('id', $this->singleFilesId);
         }
 
         if (!is_null($this->removed))
@@ -236,51 +246,40 @@ class SlideModel extends Model
             {
                 foreach ($q as $row)
                 {
-                    $slidee = [
+                    $singleFilee = [
                         'id' => (int)$row->id,
                         'name' => $row->name,
-                        'shortname' => $row->shortname,
+                        'originalName' => $row->original_name,
                     ];
 
-                    $slides[$row->id] = $slidee;
+                    $singleFiles[$row->id] = $singleFilee;
                 }
 
-                return $slides;
+                return $singleFiles;
             }
 
             if ($this->format == 'only-id')
             {               
                 foreach ($q as $row)
                 {
-                    $slides[] = $row->id;
+                    $singleFiles[] = $row->id;
                 }
 
-                return $slides;
+                return $singleFiles;
             }
 
             foreach ($q as $i => $row)
             {
                 $__createTime = new DateTime($row->create_time);
-                $__updateTime = new DateTime($row->update_time);
 
-                $slide = [
+                $singleFile = [
                     'id' => (int)$row->id,
-                    'rank' => (int)$row->rank,
-                    'title' => $row->title,
-                    'button1' => $row->button_1,
-                    'button2' => $row->button_2,
-                    'text' => [
-                        'html' => ($row->text) != NULL ? htmlspecialchars_decode($row->text): "",
-                        'plain' => ($row->text) != NULL ? strip_tags(htmlspecialchars_decode($row->text)) : "",
-                        'plainShort' => ($row->text) != NULL ? mb_substr(strip_tags(htmlspecialchars_decode($row->text)), 0, 100) . '...' : "",
-                    ],
-                    'photoImgUrl' => base_url() . '../assets/images/slides/empty_image.jpg',
-                    'updateTime' => [
-                        'format' => $__updateTime->format('d.m.Y H:i:s'),
-                        'formatDate' => $__updateTime->format('d.m.Y'),
-                        'formatShort' => $__updateTime->format('d.m.Y H:i'),
-                        'formatSystem' => $__updateTime->format('Y-m-d\TH:i:s.v\Z')
-                    ],
+                    'employee' =>['id' => (int)$row->employee_id],
+                    'slide' =>['id' => (int)$row->slide_id],
+                    'name' => $row->name,
+                    'originalName' => $row->original_name,
+                    'type' => $row->type,
+                    'path' => $row->path,
                     'createTime' => [
                         'format' => $__createTime->format('d.m.Y H:i:s'),
                         'formatDate' => $__createTime->format('d.m.Y'),
@@ -289,26 +288,37 @@ class SlideModel extends Model
                     ],          
                 ];
 
-                $slides[$row->id] = $slide;
-            }
-
-            if (!is_null($this->slideId) && array_key_exists($this->slideId, $slides))
-            {
-                $__singleFile = new SingleFileModel;
-                $__singleFile->setSlideId($this->slideId);
-                $__singleFile->setPageLimit(1);
-                $singleFileData = $__singleFile->getRecord();
-
-                if(!empty($singleFileData))
+                if(!is_null($this->employeeId))
                 {
-                    $slides[$this->slideId]['photoImgUrl'] = base_url() . $singleFileData['path'] . $singleFileData['name'] . $singleFileData['type'];
+                    $singleFiles[$row->employee_id] = $singleFile;
+                }
+                elseif(!is_null($this->slideId))
+                {
+                    $singleFiles[$row->slide_id] = $singleFile;
+                }
+                else
+                {
+                    $singleFiles[$row->id] = $singleFile;
                 }
 
-                return $slides[$this->slideId];
             }
+            
+            if (!is_null($this->singleFileId) && array_key_exists($this->singleFileId, $singleFiles))
+            {
+                return $singleFiles[$this->singleFileId];
+            }
+            elseif (!is_null($this->employeeId))
+            {
+                return $singleFiles[$this->employeeId];
+            }
+            elseif (!is_null($this->slideId))
+            {
+                return $singleFiles[$this->slideId];
+            }
+            
         }        
 
-        return $slides;
+        return $singleFiles;
     }
 
     public function createRecord()
@@ -317,16 +327,10 @@ class SlideModel extends Model
 
         $builder = $this->db->table($this->table);
 
-        if (!is_null($this->data))
-        {
-            $slides[]=$this->data;
+        $this->data['create_time'] = date('Y-m-d H:i:s');
 
-            foreach ($slides as $i => $row)
-            {
-                $builder->insert($row);
-                $this->slideId = $this->insertId();
-            }
-        }
+        $builder->insert($this->data);
+        $this->singleFileId = $this->insertId();
 
         $__systemUpdate = new SystemUpdateModel;
         $__systemUpdate->updateRecord();
@@ -338,40 +342,5 @@ class SlideModel extends Model
         }
 
         return TRUE;     
-    }
-
-    public function updateRecord()
-    {
-        $this->db->transStart();
-
-        $builder = $this->db->table($this->table);
-
-        if (!is_null($this->slideId))
-        {
-            $builder->where('id', $this->slideId);
-
-            if (!is_null($this->data))
-            {
-                $builder->update($this->data);
-            }
-        }
-        else
-        {
-            if (!is_null($this->data))
-            {
-                $builder->updateBatch($this->data, 'id');
-            }
-        }
-
-        $__systemUpdate = new SystemUpdateModel;
-        $__systemUpdate->updateRecord();
-
-        $this->db->transComplete();
-        if ($this->db->transStatus() === FALSE)
-        {          
-            return FALSE;
-        }
-
-        return TRUE;   
     }
 }
