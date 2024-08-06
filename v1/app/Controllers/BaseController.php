@@ -29,6 +29,7 @@ class BaseController extends Controller
     protected $allowedHeaders = [
         'foxdent_v1' => [
             'foxdent_crm' => 't0hN7PcgRM8RV05kehOhUxPKElMxAfEStzScqGAmWwNS2eRdLorv9YVIp45kU32ollqiN9xLGICPWROkWygdsafqsI27k554CmOy',
+            'foxdent_app' => 't0hN7PcgRM8RV05kehOhUxPKElMxAfEStzScqGAmWwNS2eRdLorv9YVIp45kU32ollqiN9xLGICPWROkWygdsafqsI27k554CmOy',
 	    ]   
     ];
 
