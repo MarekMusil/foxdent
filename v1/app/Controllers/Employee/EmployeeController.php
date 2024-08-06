@@ -98,7 +98,7 @@ class EmployeeController extends BaseController
             'employeeText'              => 'permit_empty|max_length[100]',
             'employeeEducation'         => 'permit_empty|max_length[100]',
             'employeeOfficeHours'       => 'permit_empty|max_length[255]',
-            'employeeType'              => 'permit_empty|numeric',
+            'employeeType'              => 'permit_empty|in_list[1,2,3]',
             'employeeActive'            => 'required|in_list[0,1]',
         ];
         $validation->setRules($validationRules);
@@ -121,9 +121,9 @@ class EmployeeController extends BaseController
         $employeeData = [
             'name'      => $inputData['employeeName'],
             'rank'      => $inputData['employeeRank'],
-            'degree'      => $inputData['employeeDegree'],
-            'text'      => $inputData['employeeText'],
-            'education'      => $inputData['employeeEducation'],
+            'degree'      => $inputData['employeeDegree'] ?? '',
+            'text'      => $inputData['employeeText'] ?? '',
+            'education'      => $inputData['employeeEducation'] ?? '',
             'office_hours'      => htmlspecialchars($inputData['employeeOfficeHours']),
             'type'      => $inputData['employeeType'],
             'active'      => $inputData['employeeActive'],
@@ -165,7 +165,7 @@ class EmployeeController extends BaseController
             'employeeText'              => 'permit_empty|max_length[100]',
             'employeeEducation'         => 'permit_empty|max_length[100]',
             'employeeOfficeHours'       => 'permit_empty|max_length[255]',
-            'employeeType'              => 'permit_empty|numeric',
+            'employeeType'              => 'permit_empty|in_list[1,2,3]',
             'employeeActive'            => 'required|in_list[0,1]',
         ];
         $validation->setRules($validationRules);
@@ -177,17 +177,12 @@ class EmployeeController extends BaseController
             return $this->respond($data, 422, lang('Response.422'));
         }   
 
-        if(!isset($inputData['employeeCashdeskId']))
-        {
-            $inputData['employeeCashdeskId'] = null;
-        }
-
         //$slug = CustomHelper::createSlug($inputData['employeeName']);
 
         $employeeData = [
             'name'      => $inputData['employeeName'],
             'rank'      => $inputData['employeeRank'],
-            'degree'      => $inputData['employeeDegree'],
+            'degree'      => $inputData['employeeDegree'] ?? '',
             'text'      => $inputData['employeeText'],
             'education'      => $inputData['employeeEducation'],
             'office_hours'      => htmlspecialchars($inputData['employeeOfficeHours']),
