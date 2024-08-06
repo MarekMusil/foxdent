@@ -4,6 +4,7 @@ namespace App\Controllers\Slide;
 use CodeIgniter\Controller;
 use App\Controllers\BaseController;
 use App\Models\Log\LogModel;
+use CodeIgniter\Files\File;
 
 use App\Helpers\PaginationHelper;
 use App\Models\Column\ColumnModel;
@@ -126,6 +127,11 @@ class SlideController extends BaseController
             return $this->respond(NULL, 500, lang('Response.500'));
         }
 
+        if (isset($inputData['slidePhotoTransaction']))
+        {
+            $this->assignPhoto($inputData['slidePhotoTransaction'], $__slide->getSlideId());
+        }
+
         $responseData = [
             'slide' => [
                 'id' => $__slide->getSlideId(),
@@ -185,31 +191,40 @@ class SlideController extends BaseController
         return $this->respond(null, 200, lang('Response.200'));
     }
 
-    public function uploadPhoto($slideId)
+    public function uploadPhoto($slideId = NULL)
     {
-        $__slide = new SlideModel;
-
-        if ($__slide->existsId($slideId) === FALSE)
+        $transaction = NULL;
+        
+        if(!is_null($slideId))
         {
-            return $this->respond(null, 404, lang('Response.404'));
+            $__slide = new SlideModel;
+
+            if ($__slide->existsId($slideId) === FALSE)
+            {
+                return $this->respond(null, 404, lang('Response.404'));
+            }
+
+            $token = CustomHelper::generateToken('alnum', 6);
+            $uploadDirectory = '../assets/images/slides/';
+            $name = 'slide' . $slideId . '-' . $token;
+        }
+        else
+        {
+            $token = CustomHelper::generateToken('alnum', 6);
+            $transaction = CustomHelper::generateToken('alnum', 100);
+            $uploadDirectory = '../temp/';
+            $name = 'newSlide-'.$token;
         }
 
-        $__slide->setSlideId($slideId);
-
-        $uploadDirectory = '../assets/images/slides/';
-
         $file = $_FILES['file'];
-
-        $token = CustomHelper::generateToken('alnum', 6);
-
-        $name = 'slide' . $slideId . '-' . $token;
         $fileType = '.jpg';
 
         $singleFileData = [
-            'slide_id' => $slideId,
+            'slide_id'  => $slideId,
             'name'      => $name,
             'type'      => $fileType,
             'path'      => $uploadDirectory,
+            'transaction' => $transaction
         ];
 
         $singleFile = new SingleFileModel;
@@ -222,8 +237,45 @@ class SlideController extends BaseController
         }
 
         $data['newPhotoImgUrl'] = base_url() . $destinationPath;
+        $data['slidePhotoTransaction'] = $transaction;
 
         return $this->respond($data, 200, lang('Response.200'));
+    }
 
+    public function assignPhoto($transaction, $slideId)
+    {
+        $newFolder = '../assets/images/slides/';
+        $__singleFile = new SingleFileModel;
+        $__singleFile->setTransaction($transaction);
+        $singleFile = $__singleFile->getRecord();
+        $singleFile = array_shift($singleFile);
+
+        $token = CustomHelper::generateToken('alnum', 6);
+        $newName = 'slide' . $slideId . '-' . $token;
+
+        $filePath = FCPATH . $singleFile['path'] . $singleFile['name'] . $singleFile['type'];
+        $newFilePath = FCPATH . $newFolder . $newName . $singleFile['type'];
+
+        if (file_exists($filePath) && is_file($filePath))
+        {
+            $file = new File($filePath);
+            $file->move(FCPATH . $newFolder, $newName.$singleFile['type']);
+        }
+        else
+        {
+            echo "neexistující soubor";exit;
+        }
+
+        $newFileData = [
+            'slide_id'      => $slideId,
+            'name'          => $newName,
+            'path'          => $newFolder
+        ];
+
+        $__singleFile->setSingleFileId($singleFile['id']);
+        $__singleFile->setData($newFileData);
+        $__singleFile->updateRecord();
+
+        return $this->respond(null, 200, lang('Response.200'));
     }
 }

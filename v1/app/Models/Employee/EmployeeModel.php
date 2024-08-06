@@ -320,18 +320,27 @@ class EmployeeModel extends Model
                 $employees[$row->id] = $employee;
             }
 
-            if (!is_null($this->employeeId) && array_key_exists($this->employeeId, $employees))
+            if(!empty($employees))
             {
                 $__singleFile = new SingleFileModel;
-                $__singleFile->setEmployeeId($this->employeeId);
-                $__singleFile->setPageLimit(1);
+                $__singleFile->setEmployeesId(array_keys($employees));
+                $__singleFile->setPageLimit(NULL);
                 $singleFileData = $__singleFile->getRecord();
 
                 if(!empty($singleFileData))
                 {
-                    $employees[$this->employeeId]['photoImgUrl'] = base_url() . $singleFileData['path'] . $singleFileData['name'] . $singleFileData['type'];
+                    foreach ($employees as $employeeId => $slide)
+                    {
+                        if(array_key_exists($employeeId, $singleFileData))
+                        {
+                            $employees[$employeeId]['photoImgUrl'] = base_url() . $singleFileData[$employeeId]['path'] . $singleFileData[$employeeId]['name'] . $singleFileData[$employeeId]['type'];
+                        }
+                    }
                 }
+            }
 
+            if (!is_null($this->employeeId) && array_key_exists($this->employeeId, $employees))
+            {
                 return $employees[$this->employeeId];
             }
         }        

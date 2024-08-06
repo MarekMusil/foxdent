@@ -25,10 +25,12 @@ class SingleFileModel extends Model
     private $accessRules = FALSE;
     private $appType = NULL;
     private $employeeId = NULL;
+    private $employeesId = NULL;
     private $slideId = NULL;
     private $slidesId = NULL;
     private $singleFileId = NULL;
     private $singleFilesId = NULL;
+    private $transaction = NULL;
     private $data = NULL;
     private $debugMode = FALSE;
     private $format = NULL;
@@ -59,6 +61,7 @@ class SingleFileModel extends Model
         return $this->singleFileId;
     }
 
+    
     public function setAppType($bool)
     {
         $this->appType = $bool;
@@ -67,6 +70,11 @@ class SingleFileModel extends Model
     public function setEmployeeId($employeeId)
     {
         $this->employeeId = $employeeId;
+    }
+
+    public function setEmployeesId($employeesId)
+    {
+        $this->employeesId = $employeesId;
     }
 
     public function setSlideId($slideId)
@@ -87,6 +95,11 @@ class SingleFileModel extends Model
     public function setSingleFilesId($singleFilesId)
     {
         $this->singleFilesId = $singleFilesId;
+    }
+
+    public function setTransaction($transaction)
+    {
+        $this->transaction = $transaction;
     }
     
     public function setData($data)
@@ -190,6 +203,11 @@ class SingleFileModel extends Model
             $builder->where('employee_id', $this->employeeId);
         }
 
+        if (!is_null($this->employeesId))  
+        {
+            $builder->whereIn('employee_id', $this->employeesId);
+        }
+
         if (!is_null($this->slideId))  
         {
             $builder->where('slide_id', $this->slideId);
@@ -208,6 +226,11 @@ class SingleFileModel extends Model
         if (!is_null($this->singleFilesId))  
         {
             $builder->whereIn('id', $this->singleFilesId);
+        }
+
+        if(!is_null($this->transaction))
+        {
+            $builder->where('transaction', $this->transaction);
         }
 
         if (!is_null($this->searchQuery))
@@ -297,9 +320,12 @@ class SingleFileModel extends Model
                     ],          
                 ];
 
-                if(!is_null($this->employeeId))
+                if(!is_null($this->employeeId) || !is_null($this->employeesId))
                 {
-                    $singleFiles[$row->employee_id] = $singleFile;
+                    if(!array_key_exists($this->employee_id, $singleFiles))
+                    {
+                        $singleFiles[$row->employee_id] = $singleFile;
+                    }
                 }
                 elseif(!is_null($this->slideId) || !is_null($this->slidesId))
                 {
@@ -343,6 +369,27 @@ class SingleFileModel extends Model
 
         $builder->insert($this->data);
         $this->singleFileId = $this->insertId();
+
+        $__systemUpdate = new SystemUpdateModel;
+        $__systemUpdate->updateRecord();
+        
+        $this->db->transComplete();
+        if ($this->db->transStatus() === FALSE)
+        {          
+            return FALSE;
+        }
+
+        return TRUE;     
+    }
+
+    public function updateRecord()
+    {
+        $this->db->transStart();
+
+        $builder = $this->db->table($this->table);
+
+        $builder->where('id', $this->singleFileId);
+        $builder->update($this->data);
 
         $__systemUpdate = new SystemUpdateModel;
         $__systemUpdate->updateRecord();

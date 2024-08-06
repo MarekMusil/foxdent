@@ -37,6 +37,7 @@ $routes->get('/employees/(:num)', 'Employee\EmployeeController::detail/$1');
 $routes->post('/employees', 'Employee\EmployeeController::create');
 $routes->put('/employees/(:num)', 'Employee\EmployeeController::update/$1');
 $routes->post('/employees/(:num)/upload/photo', 'Employee\EmployeeController::uploadPhoto/$1');
+$routes->post('/employees/upload/photo', 'Employee\EmployeeController::uploadPhoto');
 
 $routes->get('/texts', 'Text\TextController::get');
 $routes->get('/texts/(:num)', 'Text\TextController::detail/$1');
@@ -69,6 +70,7 @@ $routes->get('/slides/(:num)', 'Slide\SlideController::detail/$1');
 $routes->post('/slides', 'Slide\SlideController::create');
 $routes->put('/slides/(:num)', 'Slide\SlideController::update/$1');
 $routes->post('/slides/(:num)/upload/photo', 'Slide\SlideController::uploadPhoto/$1');
+$routes->post('/slides/upload/photo', 'Slide\SlideController::uploadPhoto');
 
 $routes->get('/systems/options', 'System\SystemOptionController::get');
 

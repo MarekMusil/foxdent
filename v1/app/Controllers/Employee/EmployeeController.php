@@ -4,6 +4,7 @@ namespace App\Controllers\Employee;
 use CodeIgniter\Controller;
 use App\Controllers\BaseController;
 use App\Models\Log\LogModel;
+use CodeIgniter\Files\File;
 
 use App\Helpers\PaginationHelper;
 use App\Models\Column\ColumnModel;
@@ -100,6 +101,7 @@ class EmployeeController extends BaseController
             'employeeOfficeHours'       => 'permit_empty|max_length[255]',
             'employeeType'              => 'permit_empty|in_list[1,2,3]',
             'employeeActive'            => 'required|in_list[0,1]',
+            'employeePhotoTransaction'  => 'permit_empty|exact_length[100]',
         ];
         $validation->setRules($validationRules);
 
@@ -120,7 +122,7 @@ class EmployeeController extends BaseController
 
         $employeeData = [
             'name'      => $inputData['employeeName'],
-            'rank'      => $inputData['employeeRank'],
+            'rank'      => $inputData['employeeRank'] ?? 1,
             'degree'      => $inputData['employeeDegree'] ?? '',
             'text'      => $inputData['employeeText'] ?? '',
             'education'      => $inputData['employeeEducation'] ?? '',
@@ -134,6 +136,11 @@ class EmployeeController extends BaseController
         if ($__employee->createRecord() === FALSE)
         {
             return $this->respond(NULL, 500, lang('Response.500'));
+        }
+
+        if (isset($inputData['employeePhotoTransaction']))
+        {
+            $this->assignPhoto($inputData['employeePhotoTransaction'], $__employee->getEmployeeId());
         }
 
         $responseData = [
@@ -181,7 +188,7 @@ class EmployeeController extends BaseController
 
         $employeeData = [
             'name'      => $inputData['employeeName'],
-            'rank'      => $inputData['employeeRank'],
+            'rank'      => $inputData['employeeRank'] ?? 1,
             'degree'      => $inputData['employeeDegree'] ?? '',
             'text'      => $inputData['employeeText'],
             'education'      => $inputData['employeeEducation'],
@@ -201,31 +208,39 @@ class EmployeeController extends BaseController
         return $this->respond(null, 200, lang('Response.200'));
     }
 
-    public function uploadPhoto($employeeId)
+    public function uploadPhoto($employeeId = NULL)
     {
-        $__employee = new EmployeeModel;
-
-        if ($__employee->existsId($employeeId) === FALSE)
+        $transaction = NULL;
+        if(!is_null($employeeId))
         {
-            return $this->respond(null, 404, lang('Response.404'));
+            $__employee = new EmployeeModel;
+
+            if ($__employee->existsId($employeeId) === FALSE)
+            {
+                return $this->respond(null, 404, lang('Response.404'));
+            }
+
+            $token = CustomHelper::generateToken('alnum', 6);
+            $uploadDirectory = '../assets/images/employees/';
+            $name = 'employee' . $employeeId . '-' . $token;
         }
-
-        $__employee->setEmployeeId($employeeId);
-
-        $uploadDirectory = '../assets/images/employees/';
-
+        else
+        {
+            $token = CustomHelper::generateToken('alnum', 6);
+            $transaction = CustomHelper::generateToken('alnum', 100);
+            $uploadDirectory = '../temp/';
+            $name = 'newEmployee-'.$token;
+        }
+        
         $file = $_FILES['file'];
-
-        $token = CustomHelper::generateToken('alnum', 6);
-
-        $name = 'employee' . $employeeId . '-' . $token;
         $fileType = '.jpg';
 
         $singleFileData = [
-            'employee_id' => $employeeId,
-            'name'      => $name,
-            'type'      => $fileType,
-            'path'      => $uploadDirectory,
+            'employee_id'   => $employeeId,
+            'name'          => $name,
+            'type'          => $fileType,
+            'path'          => $uploadDirectory,
+            'transaction'   => $transaction,
         ];
 
         $singleFile = new SingleFileModel;
@@ -238,8 +253,46 @@ class EmployeeController extends BaseController
         }
 
         $data['newPhotoImgUrl'] = base_url() . $destinationPath;
+        $data['employeePhotoTransaction'] = $transaction;
 
         return $this->respond($data, 200, lang('Response.200'));
 
+    }
+
+    public function assignPhoto($transaction, $employeeId)
+    {
+        $newFolder = '../assets/images/employees/';
+        $__singleFile = new SingleFileModel;
+        $__singleFile->setTransaction($transaction);
+        $singleFile = $__singleFile->getRecord();
+        $singleFile = array_shift($singleFile);
+
+        $token = CustomHelper::generateToken('alnum', 6);
+        $newName = 'employee' . $employeeId . '-' . $token;
+
+        $filePath = FCPATH . $singleFile['path'] . $singleFile['name'] . $singleFile['type'];
+        $newFilePath = FCPATH . $newFolder . $newName . $singleFile['type'];
+
+        if (file_exists($filePath) && is_file($filePath))
+        {
+            $file = new File($filePath);
+            $file->move(FCPATH . $newFolder, $newName.$singleFile['type']);
+        }
+        else
+        {
+            echo "neexistující soubor";exit;
+        }
+
+        $newFileData = [
+            'employee_id'   => $employeeId,
+            'name'          => $newName,
+            'path'          => $newFolder
+        ];
+
+        $__singleFile->setSingleFileId($singleFile['id']);
+        $__singleFile->setData($newFileData);
+        $__singleFile->updateRecord();
+
+        return $this->respond(null, 200, lang('Response.200'));
     }
 }
