@@ -78,3 +78,17 @@ in SYSTEMPATH\Database\BaseConnection.php on line 427.
  7 SYSTEMPATH\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
  8 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-06 12:13:28 --> Undefined variable $orrderType
+in APPPATH\Controllers\Employee\EmployeeController.php on line 70.
+ 1 APPPATH\Controllers\Employee\EmployeeController.php(70): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $orrderType', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Employee\\EmployeeController.php', 70)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Employee\EmployeeController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Employee\EmployeeController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-06 12:19:51 --> Undefined variable $__employee
+in APPPATH\Controllers\Slide\SlideController.php on line 62.
+ 1 APPPATH\Controllers\Slide\SlideController.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $__employee', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Slide\\SlideController.php', 62)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Slide\SlideController->get()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Slide\SlideController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

@@ -45,6 +45,8 @@ class EmployeeController extends BaseController
 
     public function get(): object
     {
+        $orderBy = 'id';
+        $orderType = 'ASC';
         $module = 'employees';
         $__employee = new EmployeeModel;
 
@@ -53,12 +55,22 @@ class EmployeeController extends BaseController
             $__employee->setEmployeeType($this->request->getGet('employeeType'));
         }
 
-        if ($this->request->getGet('active') == 1 || $this->request->getGet('active') == 0)
+        $activeFilterValue = $this->request->getGet('active');
+
+        if ($activeFilterValue == 1 || $activeFilterValue == 0)
         {
-            $__employee->setActive($this->request->getGet('active'));
+            $__employee->setActive($activeFilterValue);
         }
 
-        $pagination = PaginationHelper::createPagination($this->request, $__employee, 'rank', 'ASC');
+        if($this->clientAppName == 'foxdent_app')
+        {
+            $__employee->setActive(1);
+            $orderBy = 'rank';
+            $orderType = 'ASC';
+            $__employee->setPageLimit(NULL);
+        }
+
+        $pagination = PaginationHelper::createPagination($this->request, $__employee, $orderBy, $orderType);
         $employees = $__employee->getRecord();
 
         $columns = [];

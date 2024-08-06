@@ -45,15 +45,27 @@ class SlideController extends BaseController
 
     public function get(): object
     {
+        $orderBy = 'id';
+        $orderType = 'ASC';
         $module = 'slides';
         $__slide = new SlideModel;
 
-        if ($this->request->getGet('active') == 1 || $this->request->getGet('active') == 0)
+        $activeFilterValue = $this->request->getGet('active');
+
+        if ( $activeFilterValue == 1 || $activeFilterValue == 0)
         {
-            $__slide->setActive($this->request->getGet('active'));
+            $__slide->setActive($activeFilterValue);
         }
 
-        $pagination = PaginationHelper::createPagination($this->request, $__slide, 'rank', 'ASC');
+        if($this->clientAppName == 'foxdent_app')
+        {
+            $__slide->setActive(1);
+            $orderBy = 'rank';
+            $orderType = 'ASC';
+            $__slide->setPageLimit(NULL);
+        }
+
+        $pagination = PaginationHelper::createPagination($this->request, $__slide, $orderBy, $orderType);
         $slides = $__slide->getRecord();
 
         $columns = [];

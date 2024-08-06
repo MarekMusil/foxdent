@@ -59,7 +59,7 @@ class TextController extends BaseController
             $__text->setLocalization($this->request->getGet('localization'));
         }
 
-        $pagination = PaginationHelper::createPagination($this->request, $__text, 'texts_translations.id', 'DESC');
+        $pagination = PaginationHelper::createPagination($this->request, $__text, 'texts_translations.id', 'ASC');
         $texts = $__text->getRecord();
 
         $columns = [];
