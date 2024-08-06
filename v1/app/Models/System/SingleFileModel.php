@@ -40,7 +40,7 @@ class SingleFileModel extends Model
     private $removed = NULL;
     private $searchQuery = NULL;
     private $sortBy = 'create_time';
-    private $sortOrder = 'DESC';
+    private $sortOrder = 'ASC';
     private $withRemoved = FALSE;
     protected $sortByOptions = ['id', 'create_time'];
     protected $sortOrderOptions = ['ASC', 'DESC'];
