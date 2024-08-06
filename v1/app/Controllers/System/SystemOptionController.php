@@ -69,6 +69,10 @@ class SystemOptionController extends BaseController
                 'id' => '2',
                 'name' => 'Dentální hygiena'
             ],
+            "3" => [
+                'id' => '3',
+                'name' => 'Zubní instrumentářky'
+            ]
         ];
 
         $data = [

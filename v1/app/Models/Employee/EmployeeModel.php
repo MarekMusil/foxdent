@@ -280,9 +280,13 @@ class EmployeeModel extends Model
                 {
                     $type['name'] = 'Stomatologie';
                 }
-                else
+                elseif($row->type == 2)
                 {
                     $type['name'] = 'Dentální hygiena';
+                }
+                elseif($row->type == 3)
+                {
+                    $type['name'] = 'Zubní instrumentářky';
                 }
 
                 $employee = [
