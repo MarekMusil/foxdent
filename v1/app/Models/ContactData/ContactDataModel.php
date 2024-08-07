@@ -4,6 +4,7 @@ namespace App\Models\ContactData;
 
 use CodeIgniter\Model;
 use App\Models\System\SystemUpdateModel;
+use App\Helpers\CustomHelper;
 
 class ContactDataModel extends Model
 {   
@@ -48,12 +49,18 @@ class ContactDataModel extends Model
         $builder->select('*');
         $builder->limit(1);
         $q = $builder->get()->getResultArray()[0];
+
+        $phone1Format = CustomHelper::processPhoneNumber($q['phone_1']);
+        $phone2Format = CustomHelper::processPhoneNumber($q['phone_2']);
+
         $contactData = [
             'id' => (int)$q['id'],
             'email1' => $q['email_1'],
             'email2' => $q['email_2'],
             'phone1' => $q['phone_1'],
+            'phone1Format' => $phone1Format,
             'phone2' => $q['phone_2'],
+            'phone2Format' => $phone2Format,
             'facebook' => $q['fb'],
             'instagram' => $q['ig'],
             'address' => htmlspecialchars_decode($q['address']),

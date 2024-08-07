@@ -18,10 +18,13 @@ class CustomHelper
         return $string;
     }
 
-    public static function formatPhoneNumber($phone_number)
+    public static function processPhoneNumber($phoneNumber)
     {
-        $phone_number_format = preg_replace('/[^0-9]/', '', $phone_number);
-        return $phone_number_format;
+        $phoneNumber = str_replace(' ', '', $phoneNumber);
+        if (strlen($phoneNumber) === 9) {
+            $phoneNumber = '+420' . $phoneNumber;
+        }
+        return $phoneNumber;
     }
 
     public static function generateUniqueName($type = 'alnum', $length = 40)
