@@ -13,6 +13,7 @@ use App\Models\Pricelist\PricelistModel;
 use App\Models\Insurance\InsuranceModel;
 use App\Models\System\SystemUpdateModel;
 use App\Models\ContactData\ContactDataModel;
+use App\Models\ImportantMessage\ImportantMessageModel;
 use CodeIgniter\HTTP\Client;
 
 
@@ -59,6 +60,9 @@ class ContentController extends BaseController
         $__contactData = new ContactDataModel;
         $contactData = $__contactData->getRecord();
 
+        $__importantMessage = new ImportantMessageModel;
+        $ImportantMessage = $__importantMessage->getRecord();
+
         $__pricelist = new PricelistModel;
         $__pricelist->setPageLimit(NULL);
         $__pricelist->setSortBy('rank');
@@ -73,6 +77,7 @@ class ContentController extends BaseController
             'technologies' => array_values($texts['technologies']),
             'others' => $texts['others'],
             'contactData' => $contactData,
+            'importantMessage' => $ImportantMessage,
             'pricelist' => array_values($pricelists),
             'insurances' => array_values($insurances),
         ];
