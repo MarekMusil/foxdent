@@ -62,6 +62,9 @@ $routes->put('/insurances', 'Insurance\InsuranceController::update');
 $routes->get('/contact/data', 'ContactData\ContactDataController::get');
 $routes->put('/contact/data', 'ContactData\ContactDataController::update');
 
+$routes->get('/important_messages', 'ImportantMessage\ImportantMessageController::get');
+$routes->put('/important_messages', 'ImportantMessage\ImportantMessageController::update');
+
 $routes->get('/ratings', 'Rating\RatingController::get');
 $routes->put('/ratings', 'Rating\RatingController::update');
 

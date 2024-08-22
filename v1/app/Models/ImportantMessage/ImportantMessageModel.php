@@ -52,8 +52,8 @@ class ImportantMessageModel extends Model
         $contactData = [
             'id' => (int)$q['id'],
             'name' => $q['name'],
-            'content' => $q['content'],
-            'isVisible' => (bool)$q['is_visible']
+            'content' => htmlspecialchars_decode($q['content']),
+            'isVisible' => (int)$q['is_visible']
         ];
         return $contactData;
     }

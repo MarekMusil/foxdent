@@ -103,6 +103,11 @@ class MenuModel extends Model
                           },
                           {
                             "roles": [1],
+                            "heading": "Důležité sdělení",
+                            "route": "/settings/important-message"
+                          },
+                          {
+                            "roles": [1],
                             "heading": "Pojišťovny",
                             "route": "/settings/insurances"
                           }
@@ -190,6 +195,12 @@ class MenuModel extends Model
                         "roles": [1],
                         "heading": "Kontakt",
                         "route": "/settings/contact",
+                        "bootstrapIcon": "bi-cart"
+                      },
+                      {
+                        "roles": [1],
+                        "heading": "Důležité sdělení",
+                        "route": "/settings/important-message",
                         "bootstrapIcon": "bi-cart"
                       },
                       {
