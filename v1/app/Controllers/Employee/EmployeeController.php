@@ -232,16 +232,20 @@ class EmployeeController extends BaseController
                 return $this->respond(null, 404, lang('Response.404'));
             }
 
-            $token = CustomHelper::generateToken('alnum', 6);
-            $uploadDirectory = '../assets/images/employees/';
-            $name = 'employee' . $employeeId . '-' . $token;
+            $__employee->setEmployeeId($employeeId);
+            $employee = $__employee->getRecord();
+            $employeeSlug = CustomHelper::createSlug($employee['name']);
+
+            $token = CustomHelper::generateToken('alnum', 4);
+            $uploadDirectory = 'assets/images/employees/';
+            $name = $employeeSlug . '-' . $token;
         }
         else
         {
-            $token = CustomHelper::generateToken('alnum', 6);
+            $token = CustomHelper::generateToken('alnum', 4);
             $transaction = CustomHelper::generateToken('alnum', 100);
-            $uploadDirectory = '../temp/';
-            $name = 'newEmployee-'.$token;
+            $uploadDirectory = 'temp/';
+            $name = 'new-unknown-'.$token;
         }
         
         $file = $_FILES['file'];
@@ -260,7 +264,7 @@ class EmployeeController extends BaseController
         
         if($singleFile->createRecord() === TRUE)
         {
-            $destinationPath = $uploadDirectory . $name . $fileType;
+            $destinationPath = '../' . $uploadDirectory . $name . $fileType;
             move_uploaded_file($file['tmp_name'], $destinationPath);
         }
 
@@ -273,22 +277,27 @@ class EmployeeController extends BaseController
 
     public function assignPhoto($transaction, $employeeId)
     {
-        $newFolder = '../assets/images/employees/';
+        $__employee = new EmployeeModel;
+        $__employee->setEmployeeId($employeeId);
+        $employee = $__employee->getRecord();
+        $employeeSlug = CustomHelper::createSlug($employee['name']);
+
+        $newFolder = 'assets/images/employees/';
         $__singleFile = new SingleFileModel;
         $__singleFile->setTransaction($transaction);
         $singleFile = $__singleFile->getRecord();
         $singleFile = array_shift($singleFile);
 
-        $token = CustomHelper::generateToken('alnum', 6);
-        $newName = 'employee' . $employeeId . '-' . $token;
+        $token = CustomHelper::generateToken('alnum', 4);
+        $newName = $employeeSlug . '-' . $token;
 
-        $filePath = FCPATH . $singleFile['path'] . $singleFile['name'] . $singleFile['type'];
-        $newFilePath = FCPATH . $newFolder . $newName . $singleFile['type'];
+        $filePath = FCPATH . '../' . $singleFile['path'] . $singleFile['name'] . $singleFile['type'];
+        $newFilePath = FCPATH . '../' . $newFolder . $newName . $singleFile['type'];
 
         if (file_exists($filePath) && is_file($filePath))
         {
             $file = new File($filePath);
-            $file->move(FCPATH . $newFolder, $newName.$singleFile['type']);
+            $file->move(FCPATH . '../' . $newFolder, $newName.$singleFile['type']);
         }
         else
         {

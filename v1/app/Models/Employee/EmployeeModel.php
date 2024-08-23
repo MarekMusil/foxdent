@@ -293,7 +293,7 @@ class EmployeeModel extends Model
                     'id' => (int)$row->id,
                     'name' => $row->name,
                     'rank' => (int)$row->rank,
-                    'photoImgUrl' => base_url() . '../assets/images/employees/empty_image.jpg',
+                    'photoImgUrl' => str_replace('v1/', '', base_url()) . '../assets/images/employees/empty_image.jpg',
                     'degree' => $row->degree,
                     'text' => $row->text,
                     'education' => $row->education,
@@ -333,7 +333,7 @@ class EmployeeModel extends Model
                     {
                         if(array_key_exists($employeeId, $singleFileData))
                         {
-                            $employees[$employeeId]['photoImgUrl'] = base_url() . $singleFileData[$employeeId]['path'] . $singleFileData[$employeeId]['name'] . $singleFileData[$employeeId]['type'];
+                            $employees[$employeeId]['photoImgUrl'] = str_replace('v1/', '', base_url()) . $singleFileData[$employeeId]['path'] . $singleFileData[$employeeId]['name'] . $singleFileData[$employeeId]['type'];
                         }
                     }
                 }
