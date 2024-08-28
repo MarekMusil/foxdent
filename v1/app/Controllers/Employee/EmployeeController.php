@@ -111,7 +111,7 @@ class EmployeeController extends BaseController
             'employeeText'              => 'permit_empty|max_length[100]',
             'employeeEducation'         => 'permit_empty|max_length[100]',
             'employeeOfficeHours'       => 'permit_empty|max_length[255]',
-            'employeeType'              => 'permit_empty|in_list[1,2,3]',
+            'employeeType'              => 'permit_empty|in_list[1,2,3,4]',
             'employeeActive'            => 'required|in_list[0,1]',
             'employeePhotoTransaction'  => 'permit_empty|exact_length[100]',
         ];
@@ -184,7 +184,7 @@ class EmployeeController extends BaseController
             'employeeText'              => 'permit_empty|max_length[100]',
             'employeeEducation'         => 'permit_empty|max_length[100]',
             'employeeOfficeHours'       => 'permit_empty|max_length[255]',
-            'employeeType'              => 'permit_empty|in_list[1,2,3]',
+            'employeeType'              => 'permit_empty|in_list[1,2,3,4]',
             'employeeActive'            => 'required|in_list[0,1]',
         ];
         $validation->setRules($validationRules);

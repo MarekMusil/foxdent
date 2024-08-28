@@ -288,6 +288,11 @@ class EmployeeModel extends Model
                 {
                     $type['name'] = 'Zubní instrumentářky';
                 }
+                elseif($row->type == 4)
+                {
+                    $type['name'] = 'Ostatní';
+                }
+
 
                 $employee = [
                     'id' => (int)$row->id,
