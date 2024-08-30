@@ -39,6 +39,14 @@ $routes->put('/employees/(:num)', 'Employee\EmployeeController::update/$1');
 $routes->post('/employees/(:num)/upload/photo', 'Employee\EmployeeController::uploadPhoto/$1');
 $routes->post('/employees/upload/photo', 'Employee\EmployeeController::uploadPhoto');
 
+$routes->get('/pages', 'Page\PageController::get');
+$routes->get('/pages/(:num)', 'Page\PageController::detail/$1');
+$routes->put('/pages/(:num)', 'Page\PageController::update/$1');
+$routes->post('/pages', 'Page\PageController::create');
+
+$routes->get('/pages/structure', 'Page\PageController::getPagesStructure');
+$routes->put('/pages/structure', 'Page\PageController::updatePagesStructure');
+
 $routes->get('/texts', 'Text\TextController::get');
 $routes->get('/texts/(:num)', 'Text\TextController::detail/$1');
 $routes->put('/texts/(:num)', 'Text\TextController::update/$1');

@@ -92,6 +92,28 @@ class MenuModel extends Model
                     "pages": [
                       {
                         "roles": [1],
+                        "sectionTitle": "Stránky",
+                        "route": "/pages",
+                        "bootstrapIcon": "bi bi-filetype-html",
+                        "sub": [
+                          {
+                            "roles": [1],
+                            "heading": "Seznam stránek",
+                            "route": "/pages/structure"
+                          },
+                          {
+                            "roles": [1],
+                            "heading": "Texty",
+                            "route": "/pages/texts"
+                          }
+                        ]
+                      }
+                    ]
+                },
+                {
+                    "pages": [
+                      {
+                        "roles": [1],
                         "sectionTitle": "Nastavení",
                         "route": "/settings",
                         "bootstrapIcon": "bi bi-gear",
@@ -185,6 +207,24 @@ class MenuModel extends Model
                             "route": "/slides",
                             "bootstrapIcon": "bi-app-indicator"
                         }
+                    ]
+                },
+                {
+                    "heading": "Stránky",
+                    "route": "/pages",
+                    "pages": [
+                      {
+                        "roles": [1],
+                        "heading": "Seznam stránek",
+                        "route": "/pages/structure",
+                        "bootstrapIcon": "bi-cart"
+                      },
+                      {
+                        "roles": [1],
+                        "heading": "Texty",
+                        "route": "/pages/texts",
+                        "bootstrapIcon": "bi-cart"
+                      }
                     ]
                 },
                 {

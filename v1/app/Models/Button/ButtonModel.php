@@ -44,6 +44,15 @@ class ButtonModel extends Model
                     "url": "/slides/create"
                 }
             },
+            "pages": {
+                "create": {
+                    "title": "Přidat",
+                    "isLink": 1,
+                    "class" : "btn-success",
+                    "icon": "bi bi-plus",
+                    "url": "/pages/texts/create"
+                }
+            },
             "texts": {
                 "create": {
                     "title": "Přidat",

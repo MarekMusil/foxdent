@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Text;
+namespace App\Models\Page;
 
 use CodeIgniter\Model;
 use App\Models\System\SystemUpdateModel;
@@ -10,7 +10,7 @@ helper('filesystem');
 helper('file');
 //use App\Helpers\CustomHelper;
 
-class TextModel extends Model
+class PageModel extends Model
 {
     public function __construct()
     {
@@ -26,10 +26,9 @@ class TextModel extends Model
     private $accessRules = FALSE;
     private $active = NULL;
     private $appType = NULL;
-    private $textTranslationId = NULL;
-    private $textId = NULL;
-    private $textsId = NULL;
-    private $textType = NULL;
+    private $pageTranslationId = NULL;
+    private $pageId = NULL;
+    private $pagesId = NULL;
     private $data = NULL;
     private $debugMode = FALSE;
     private $localization = 'cs_CZ';
@@ -42,10 +41,10 @@ class TextModel extends Model
     private $sortBy = 'id';
     private $sortOrder = 'ASC';
     private $withRemoved = FALSE;
-    protected $sortByOptions = ['texts_translations.id','texts.rank'];
+    protected $sortByOptions = ['pages_translations.id','pages.rank'];
     protected $sortOrderOptions = ['ASC', 'DESC'];
-    protected $table = 'texts';
-    protected $tblTextTrans = 'texts_translations';
+    protected $table = 'pages';
+    protected $tblPageTrans = 'pages_translations';
 
     public function getPageLimit()
     {
@@ -57,9 +56,9 @@ class TextModel extends Model
         return $this->pageNumber;
     }
 
-    public function getTextId()
+    public function getPageId()
     {
-        return $this->textId;
+        return $this->pageId;
     }
 
     public function setActive($bool)
@@ -72,24 +71,19 @@ class TextModel extends Model
         $this->appType = $bool;
     }
 
-    public function setTextTranslationId($textTranslationId)
+    public function setPageTranslationId($pageTranslationId)
     {
-        $this->textTranslationId = $textTranslationId;
+        $this->pageTranslationId = $pageTranslationId;
     }
 
-    public function setTextId($textId)
+    public function setPageId($pageId)
     {
-        $this->textId = $textId;
+        $this->pageId = $pageId;
     }
 
-    public function setTextsId($textsId)
+    public function setPagesId($pagesId)
     {
-        $this->textsId = $textsId;
-    }
-
-    public function setTextType($textType)
-    {
-        $this->textType = $textType;
+        $this->pagesId = $pagesId;
     }
 
     public function setLocalization($localization)
@@ -155,11 +149,11 @@ class TextModel extends Model
         $this->withRemoved = $bool;
     }
     
-    public function existsId($textId, $removed = 0)
+    public function existsId($pageId, $removed = 0)
     {
         $builder = $this->db->table($this->table);
         $builder->select('id');
-        $builder->where('id', $textId);
+        $builder->where('id', $pageId);
         $builder->where('removed', $removed);
         $q = $builder->get()->getResult();
 
@@ -176,11 +170,11 @@ class TextModel extends Model
         return FALSE;        
     }
 
-    public function existsTransaltionForText($textId, $localization)
+    public function existsTransaltionForPage($pageId, $localization)
     {
-        $builder = $this->db->table($this->tblTextTrans);
+        $builder = $this->db->table($this->tblPageTrans);
         $builder->select('id');
-        $builder->where('text_id', $textId);
+        $builder->where('page_id', $pageId);
         $builder->where('localization', $localization);
         $q = $builder->get()->getResult();
 
@@ -197,32 +191,11 @@ class TextModel extends Model
         return FALSE;        
     }
 
-    public function isValidTypeForText($textId, $textType)
+    public function existsPageTranslationId($pageTranslationId, $removed = 0)
     {
-        $builder = $this->db->table($this->table);
+        $builder = $this->db->table($this->tblPageTrans);
         $builder->select('id');
-        $builder->where('id', $textId);
-        $builder->where('type', $textType);
-        $q = $builder->get()->getResult();
-
-        if ($this->debugMode === TRUE)
-        {
-            echo $builder->getCompiledSelect();
-        }
-        
-        if (count($q) > 0)
-        {
-            return TRUE;
-        }
-        
-        return FALSE;        
-    }
-
-    public function existsTextTranslationId($textTranslationId, $removed = 0)
-    {
-        $builder = $this->db->table($this->tblTextTrans);
-        $builder->select('id');
-        $builder->where('id', $textTranslationId);
+        $builder->where('id', $pageTranslationId);
         $q = $builder->get()->getResult();
 
         if ($this->debugMode === TRUE)
@@ -241,10 +214,10 @@ class TextModel extends Model
     public function getRecord()
     {
         $builder = $this->db->table($this->table);
-        $texts = [];
-        $serviceTexts = [];
-        $technologyTexts = [];
-        $otherTexts = [];
+        $pages = [];
+        $servicePages = [];
+        $technologyPages = [];
+        $otherPages = [];
 
         if ($this->onlyCount === FALSE)
         {
@@ -252,20 +225,16 @@ class TextModel extends Model
                 '.$this->table.'.id,
                 '.$this->table.'.slug,
                 '.$this->table.'.rank,
-                '.$this->table.'.type,
                 '.$this->table.'.name,
-                '.$this->table.'.note,
                 '.$this->table.'.active,
                 '.$this->table.'.create_time,
                 '.$this->table.'.update_time,
-                '.$this->tblTextTrans.'.id AS translationTextId,
-                '.$this->tblTextTrans.'.localization,
-                '.$this->tblTextTrans.'.title,
-                '.$this->tblTextTrans.'.subtitle,
-                '.$this->tblTextTrans.'.content,
-                '.$this->tblTextTrans.'.meta_title,
-                '.$this->tblTextTrans.'.meta_description,
-                '.$this->tblTextTrans.'.meta_keywords
+                '.$this->tblPageTrans.'.id AS translationPageId,
+                '.$this->tblPageTrans.'.localization,
+                '.$this->tblPageTrans.'.title,
+                '.$this->tblPageTrans.'.meta_title,
+                '.$this->tblPageTrans.'.meta_description,
+                '.$this->tblPageTrans.'.meta_keywords,
             ');          
         }
 
@@ -274,38 +243,33 @@ class TextModel extends Model
             $builder->select('COUNT('.$this->table.'.id) AS count');
         } 
         
-        if ($this->format == 'only-texts' || $this->format == 'only-id-for-texts' || $this->format == 'select-option-group-by-type')
+        if ($this->format == 'only-pages' || $this->format == 'only-id-for-pages')
         {
-            $builder->join($this->tblTextTrans, $this->table . '.id = ' . $this->tblTextTrans . '.text_id', 'left');
+            $builder->join($this->tblPageTrans, $this->table . '.id = ' . $this->tblPageTrans . '.page_id', 'left');
         }
         else
         {
-            $builder->join($this->tblTextTrans, $this->table . '.id = ' . $this->tblTextTrans . '.text_id');
+            $builder->join($this->tblPageTrans, $this->table . '.id = ' . $this->tblPageTrans . '.page_id');
         }
         
         if (!is_null($this->localization))
         {
-            $builder->where($this->tblTextTrans.'.localization', $this->localization);
+            $builder->where($this->tblPageTrans.'.localization', $this->localization);
         }
         
-        if (!is_null($this->textTranslationId))  
+        if (!is_null($this->pageTranslationId))  
         {
-            $builder->where($this->tblTextTrans.'.id', $this->textTranslationId);
+            $builder->where($this->tblPageTrans.'.id', $this->pageTranslationId);
         }
 
-        if (!is_null($this->textId))  
+        if (!is_null($this->pageId))  
         {
-            $builder->where($this->table.'.id', $this->textId);
+            $builder->where($this->table.'.id', $this->pageId);
         }
 
-        if (!is_null($this->textsId))  
+        if (!is_null($this->pagesId))  
         {
-            $builder->whereIn($this->table.'.id', $this->textsId);
-        }
-
-        if (!is_null($this->textType))  
-        {
-            $builder->where($this->table.'.type', $this->textType);
+            $builder->whereIn($this->table.'.id', $this->pagesId);
         }
 
         if (!is_null($this->searchQuery))
@@ -318,9 +282,9 @@ class TextModel extends Model
             $builder->where($this->table.'.active', $this->active);
         }
 
-        if ($this->accessRules === TRUE && !is_null($this->textsId))
+        if ($this->accessRules === TRUE && !is_null($this->pagesId))
         {
-            $builder->whereIn($this->table.'.id', $this->textsId);
+            $builder->whereIn($this->table.'.id', $this->pagesId);
         }
 
         if (!is_null($this->removed))
@@ -356,115 +320,64 @@ class TextModel extends Model
 
         if (count($q) > 0)
         {
-            if ($this->format === 'select-option-group-by-type')
-            {
-                foreach ($q as $row)
-                {
-                    $text = [
-                        'id' => (int)$row->id,
-                        'name' => $row->name,   
-                    ];
-
-                    if ($row->type == 1)
-                    {
-                        $serviceTexts[] = $text;
-                    }
-                    elseif($row->type == 2)
-                    {
-                        $technologyTexts[] = $text;
-                    }
-                    else
-                    {
-                        $otherTexts[] = $text;
-                    }
-
-                    $texts[$row->id] = $text;
-                }
-
-                $groupedTexts['services'] = $serviceTexts;
-                $groupedTexts['technologies'] = $technologyTexts;
-                $groupedTexts['others'] = $otherTexts;
-                $groupedTexts['all'] = array_values($texts);
-                return $groupedTexts;
-
-                return $texts;
-            }
-
             if ($this->format === 'select-option')
             {
                 foreach ($q as $row)
                 {
-                    $text = [
+                    $page = [
                         'id' => (int)$row->id,
                         'name' => $row->name,   
                     ];
 
-                    $texts[$row->id] = $text;
+                    $pages[$row->id] = $page;
                 }
 
-                return $texts;
+                return $pages;
             }
 
-            if ($this->format == 'only-id' || $this->format == 'only-id-for-texts')
-            {               
+            if ($this->format == 'only-id' || $this->format == 'only-id-for-pages')
+            {         
                 foreach ($q as $row)
                 {
-                    $texts[] = $row->id;
+                    $pages[] = $row->id;
                 }
 
-                return $texts;
+                return $pages;
             }
 
 
 
-            if ($this->format == 'only-texts')
+            if ($this->format == 'only-pages')
             {          
                 foreach ($q as $i => $row)
                 {
                     $__createTime = new DateTime($row->create_time);
                     $__updateTime = new DateTime($row->update_time);
     
-                    $text = [
+                    $page = [
                         'id' => (int)$row->id,
                         'rank' => (int)$row->rank,
                         'slug' => $row->slug,
-                        'type' => ['value' => (int)$row->type],
                         'name' => $row->name,
-                        'note' => $row->note,
                         'active' => [
                             'value' => (int)$row->active
                         ]       
                     ];
 
-                    if (!is_null($row->translationTextId) && $row->localization == 'cs_CZ')
+                    if (!is_null($row->translationPageId) && $row->localization == 'cs_CZ')
                     {
-                        $text['linkForCrm'] = '/texts/'.$row->translationTextId;
+                        $page['linkForCrm'] = '/pages/texts/'.$row->translationPageId;
                     }
                     else
                     {
-                        $text['linkForCrm'] = '/texts/create?typeId='.$row->type.'&textId='.$row->id;
-                    }
-
-                    if ($row->type == 1)
-                    {
-                        $text['type']['text'] = 'Služby';
-                        $text['imgUrl'] = base_url() . '../assets/images/services/'.$row->slug.'.svg';
-
-                    }
-                    elseif($row->type == 2)
-                    {
-                        $text['type']['text'] = 'Technologie';
-                    }
-                    else
-                    {
-                        $text['type']['text'] = 'Ostatní';
+                        $page['linkForCrm'] = '/pages/texts/create/';
                     }
     
-                    $texts[$row->id] = $text;
+                    $pages[$row->id] = $page;
                 }
 
 
-                return $texts;
+                return $pages;
             }
 
             foreach ($q as $i => $row)
@@ -472,19 +385,19 @@ class TextModel extends Model
                 $__createTime = new DateTime($row->create_time);
                 $__updateTime = new DateTime($row->update_time);
 
-                $text = [
-                    'id' => (int)$row->translationTextId,
+                $page = [
+                    'id' => (int)$row->translationPageId,
                     'rank' => (int)$row->rank,
                     'slug' => $row->slug,
-                    'type' => ['value' => (int)$row->type],
-                    'textId' => (int)$row->id,
+                    'pageId' => (int)$row->id,
                     'name' => $row->name,
-                    'note' => $row->note,
                     'localization' => $row->localization,
                     'title' => $row->title,
-                    'subtitle' => $row->subtitle,
-                    'content' => htmlspecialchars_decode($row->content),
-                    'meta' => [],
+                    'meta' => [
+                        'title' => $row->meta_title,
+                        'description' => $row->meta_description,
+                        'keywords' => $row->meta_keywords
+                    ],
                     'updateTime' => [
                         'format' => $__updateTime->format('d.m.Y H:i:s'),
                         'formatDate' => $__updateTime->format('d.m.Y'),
@@ -499,63 +412,32 @@ class TextModel extends Model
                     ],          
                 ];
 
-                if ($row->type == 1)
-                {
-                    $text['type']['text'] = 'Služby';
-                    $text['meta']['title'] = $row->meta_title;
-                    $text['meta']['description'] = $row->meta_description;
-                    $text['meta']['keywords'] = $row->meta_keywords;
-                    $text['imgUrl'] = base_url() . '../assets/images/services/'.$row->slug.'.svg';
-                    $serviceTexts[$row->translationTextId] = $text;
-                }
-                elseif($row->type == 2)
-                {
-                    $text['type']['text'] = 'Technologie';
-                    $text['meta']['title'] = $row->meta_title;
-                    $text['meta']['description'] = $row->meta_description;
-                    $text['meta']['keywords'] = $row->meta_keywords;
-                    $technologyTexts[$row->translationTextId] = $text;
-                }
-                else
-                {
-                    $text['type']['text'] = 'Ostatní';
-                    $otherTexts[$row->slug] = $text;
-                }
-
-                $texts[$row->translationTextId] = $text;
+                $pages[$row->translationPageId] = $page;
             }
 
-            if (!is_null($this->textTranslationId) && array_key_exists($this->textTranslationId, $texts))
+            if (!is_null($this->pageTranslationId) && array_key_exists($this->pageTranslationId, $pages))
             {
-                return $texts[$this->textTranslationId];
-            }
-
-            if ($this->format == 'groupByType')
-            {
-                $groupedTexts['services'] = $serviceTexts;
-                $groupedTexts['technologies'] = $technologyTexts;
-                $groupedTexts['others'] = $otherTexts;
-                return $groupedTexts;
+                return $pages[$this->pageTranslationId];
             }
         }        
 
-        return $texts;
+        return $pages;
     }
 
     public function createRecord()
     {
         $this->db->transStart();
 
-        $builder = $this->db->table($this->tblTextTrans);
+        $builder = $this->db->table($this->tblPageTrans);
 
         if (!is_null($this->data))
         {
-            $texts[]=$this->data;
+            $pages[]=$this->data;
 
-            foreach ($texts as $i => $row)
+            foreach ($pages as $i => $row)
             {
                 $builder->insert($row);
-                $this->textId = $this->insertId();
+                $this->pageId = $this->insertId();
             }
         }
 
@@ -575,11 +457,11 @@ class TextModel extends Model
     {
         $this->db->transStart();
 
-        $builder = $this->db->table($this->tblTextTrans);
+        $builder = $this->db->table($this->tblPageTrans);
 
-        if (!is_null($this->textTranslationId))
+        if (!is_null($this->pageTranslationId))
         {
-            $builder->where('id', $this->textTranslationId);
+            $builder->where('id', $this->pageTranslationId);
 
             if (!is_null($this->data))
             {
@@ -603,15 +485,15 @@ class TextModel extends Model
         return TRUE;   
     }
 
-    public function updateTextRecord()
+    public function updatePageRecord()
     {
         $this->db->transStart();
 
         $builder = $this->db->table($this->table);
 
-        if (!is_null($this->textId))
+        if (!is_null($this->pageId))
         {
-            $builder->where('id', $this->textId);
+            $builder->where('id', $this->pageId);
 
             if (!is_null($this->data))
             {
@@ -639,13 +521,12 @@ class TextModel extends Model
         return TRUE;   
     }
 
-    public function updateTextRecordByType($typeId)
+    public function updatePageStructureRecord()
     {
         $builder = $this->db->table($this->table);
         $today = date('Y-m-d H:i:s');
         $this->setPageLimit(NULL);
-        $this->setTextType($typeId);
-        $this->setFormat('only-id-for-texts');
+        $this->setFormat('only-id-for-pages');
         $itemsInTable = $this->getRecord();
         $itemsToUpdate = [];
         $itemsToCreate = [];
@@ -659,7 +540,6 @@ class TextModel extends Model
                     'rank'      => $data['rank'],
                     'name'        => $data['name'],
                     'active'        => $data['active'],
-                    'type'        => $typeId,
                     'slug'        => CustomHelper::createSlug($data['name']),
                 ];
             }
@@ -676,7 +556,6 @@ class TextModel extends Model
                         'rank'      => $data['rank'],
                         'name'        => $data['name'],
                         'active'        => $data['active'],
-                        'type'        => $typeId,
                         'slug'        => CustomHelper::createSlug($data['name']),
                     ];
                 } 
@@ -689,12 +568,13 @@ class TextModel extends Model
             foreach ($itemsToCreate as $i => $row)
             {
                 $builderCreate->insert($row);
-                $textId = $this->insertId();
+                $pageId = $this->insertId();
 
-                $builderCreateTrans = $this->db->table($this->tblTextTrans);
+                $builderCreateTrans = $this->db->table($this->tblPageTrans);
                 $builderCreateTrans->insert([
-                    'text_id' => $textId,
+                    'page_id' => $pageId,
                     'localization' => 'cs_CZ',
+                    'name' => $row['name'],
                     'title' => $row['name'],
                 ]);
             }
@@ -702,9 +582,9 @@ class TextModel extends Model
 
         if (!empty($itemsToRemove))
         {
-            /* $builderRemove = $this->db->table($this->table);
+            $builderRemove = $this->db->table($this->table);
             $builderRemove->whereIn('id', $itemsToRemove);
-            $builderRemove->delete(); */
+            $builderRemove->update(['removed' => 1]);
         }
 
         if (!empty($itemsToUpdate))
@@ -721,19 +601,19 @@ class TextModel extends Model
     public function getCacheData($type)
     {
         helper('filesystem');
-        $texts = [];
-        $loadtexts = FALSE;
+        $pages = [];
+        $loadpages = FALSE;
 
-        if ($type === 'select-option-group-by-type')
+        if ($type === 'select-option')
         {
-            $filetexts = CACHE_PATH . 'texts.json';
+            $filepages = CACHE_PATH . 'pages.json';
 
-            if (file_exists($filetexts) === TRUE)
+            if (file_exists($filepages) === TRUE)
             {
-                $filetextsDate = filemtime($filetexts);
-                if (time() - $filetextsDate <= CACHE_MAX_TIME)
+                $filepagesDate = filemtime($filepages);
+                if (time() - $filepagesDate <= CACHE_MAX_TIME)
                 {
-                    $dataJson = file_get_contents($filetexts);
+                    $dataJson = file_get_contents($filepages);
                     $dataArray = FALSE;
 
                     if (!empty($dataJson))
@@ -745,33 +625,33 @@ class TextModel extends Model
                     if (is_array($dataArray) === TRUE)
                     {
 
-                        foreach ($dataArray as $typeName => $textType)
+                        foreach ($dataArray as $typeName => $pageType)
                         {
-                            foreach ($textType as $data)
+                            foreach ($pageType as $data)
                             {
-                                $text = [
+                                $page = [
                                     'id' => $data['id'],
                                     'name' => $data['name'],
                                 ];
-                                $texts[$typeName][] = $text;
+                                $pages[$data['id']] = $page;
                             }
 
                         }
-                        $loadtexts = TRUE;
+                        $loadpages = TRUE;
                     }
                 }
             }
         }
         else if ($type === 'data')
         {
-            $filetexts = CACHE_PATH . 'texts_data.json';
+            $filepages = CACHE_PATH . 'pages_data.json';
 
-            if (file_exists($filetexts) === TRUE)
+            if (file_exists($filepages) === TRUE)
             {
-                $filetextsDate = filemtime($filetexts);
-                if (time() - $filetextsDate <= CACHE_MAX_TIME)
+                $filepagesDate = filemtime($filepages);
+                if (time() - $filepagesDate <= CACHE_MAX_TIME)
                 {
-                    $dataJson = get_filenames($filetexts);
+                    $dataJson = get_filenames($filepages);
                     $dataArray = FALSE;
                     if (!empty($dataJson))
                     {
@@ -782,27 +662,27 @@ class TextModel extends Model
                     {
                         foreach ($dataArray as $data)
                         {
-                            $texts[$data['id']] = $data;
+                            $pages[$data['id']] = $data;
                         }
                         
-                        $loadtexts = TRUE;
+                        $loadpages = TRUE;
                     }
                 }
 
             }
         }
 
-        if ($loadtexts === FALSE)
+        if ($loadpages === FALSE)
         {
-            $__text = new TextModel;
-            $__text->setFormat($type);
-            $__text->setPageLimit(NULL);
-            $texts = $__text->getRecord();
+            $__page = new PageModel;
+            $__page->setFormat($type);
+            $__page->setPageLimit(NULL);
+            $pages = $__page->getRecord();
 
-            $data_texts = json_encode(($texts), JSON_UNESCAPED_UNICODE);
-            write_file($filetexts, $data_texts);
+            $data_pages = json_encode(($pages), JSON_UNESCAPED_UNICODE);
+            write_file($filepages, $data_pages);
         }
 
-        return $texts;
+        return $pages;
     }
 }

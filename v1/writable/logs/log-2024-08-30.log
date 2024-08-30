@@ -1,0 +1,207 @@
+ERROR - 2024-08-30 09:04:07 --> mysqli_sql_exception: Unknown column 'pages.note' in 'field list' in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `pages`....', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pages`....')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pages`....')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pages`....', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Page\PageModel.php(314): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Page\PageController.php(58): App\Models\Page\PageModel->getRecord()
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Page\PageController->get()
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-08-30 09:04:07 --> Unknown column 'pages.note' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`note`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`subtitle`, `pages_translations`.`content`
+FROM `pages`
+JOIN `pages_translations` ON `pages`.`id` = `pages_translations`.`page_id`
+WHERE `pages_translations`.`localization` = \'cs_CZ\'
+AND `pages`.`removed` = 0
+ORDER BY `pages_translations`.`id` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`note`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`subtitle`, `pages_translations`.`content`
+FROM `pages`
+JOIN `pages_translations` ON `pages`.`id` = `pages_translations`.`page_id`
+WHERE `pages_translations`.`localization` = \'cs_CZ\'
+AND `pages`.`removed` = 0
+ORDER BY `pages_translations`.`id` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`note`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`subtitle`, `pages_translations`.`content`
+FROM `pages`
+JOIN `pages_translations` ON `pages`.`id` = `pages_translations`.`page_id`
+WHERE `pages_translations`.`localization` = \'cs_CZ\'
+AND `pages`.`removed` = 0
+ORDER BY `pages_translations`.`id` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`note`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`subtitle`, `pages_translations`.`content`
+FROM `pages`
+JOIN `pages_translations` ON `pages`.`id` = `pages_translations`.`page_id`
+WHERE `pages_translations`.`localization` = :pages_translations.localization:
+AND `pages`.`removed` = :pages.removed:
+ORDER BY `pages_translations`.`id` ASC', [...], false)
+ 5 APPPATH\Models\Page\PageModel.php(314): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Page\PageController.php(58): App\Models\Page\PageModel->getRecord()
+ 7 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->get()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 9 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-08-30 09:05:04 --> mysqli_sql_exception: Unknown column 'pages_translations.subtitle' in 'field list' in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `pages`....', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pages`....')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pages`....')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pages`....', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Page\PageModel.php(313): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Page\PageController.php(58): App\Models\Page\PageModel->getRecord()
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Page\PageController->get()
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-08-30 09:05:04 --> Unknown column 'pages_translations.subtitle' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`subtitle`, `pages_translations`.`content`
+FROM `pages`
+JOIN `pages_translations` ON `pages`.`id` = `pages_translations`.`page_id`
+WHERE `pages_translations`.`localization` = \'cs_CZ\'
+AND `pages`.`removed` = 0
+ORDER BY `pages_translations`.`id` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`subtitle`, `pages_translations`.`content`
+FROM `pages`
+JOIN `pages_translations` ON `pages`.`id` = `pages_translations`.`page_id`
+WHERE `pages_translations`.`localization` = \'cs_CZ\'
+AND `pages`.`removed` = 0
+ORDER BY `pages_translations`.`id` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`subtitle`, `pages_translations`.`content`
+FROM `pages`
+JOIN `pages_translations` ON `pages`.`id` = `pages_translations`.`page_id`
+WHERE `pages_translations`.`localization` = \'cs_CZ\'
+AND `pages`.`removed` = 0
+ORDER BY `pages_translations`.`id` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`subtitle`, `pages_translations`.`content`
+FROM `pages`
+JOIN `pages_translations` ON `pages`.`id` = `pages_translations`.`page_id`
+WHERE `pages_translations`.`localization` = :pages_translations.localization:
+AND `pages`.`removed` = :pages.removed:
+ORDER BY `pages_translations`.`id` ASC', [...], false)
+ 5 APPPATH\Models\Page\PageModel.php(313): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Page\PageController.php(58): App\Models\Page\PageModel->getRecord()
+ 7 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->get()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 9 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-30 09:07:06 --> Undefined property: stdClass::$note
+in APPPATH\Models\Page\PageModel.php on line 395.
+ 1 APPPATH\Models\Page\PageModel.php(395): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$note', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Page\\PageModel.php', 395)
+ 2 APPPATH\Controllers\Page\PageController.php(58): App\Models\Page\PageModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-30 09:07:17 --> Undefined property: stdClass::$content
+in APPPATH\Models\Page\PageModel.php on line 402.
+ 1 APPPATH\Models\Page\PageModel.php(402): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$content', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Page\\PageModel.php', 402)
+ 2 APPPATH\Controllers\Page\PageController.php(58): App\Models\Page\PageModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->get()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-30 09:21:02 --> Undefined array key "pageSubtitle"
+in APPPATH\Controllers\Page\PageController.php on line 118.
+ 1 APPPATH\Controllers\Page\PageController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pageSubtitle"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Page\\PageController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->create()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-30 09:21:58 --> Undefined variable $pageTranslationData
+in APPPATH\Controllers\Page\PageController.php on line 130.
+ 1 APPPATH\Controllers\Page\PageController.php(130): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pageTranslationData', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Controllers\\Page\\PageController.php', 130)
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->create()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-30 09:25:24 --> Too few arguments to function App\Controllers\Page\PageController::getPagesStructure(), 0 passed in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php on line 932 and exactly 1 expected
+in APPPATH\Controllers\Page\PageController.php on line 85.
+ 1 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->getPagesStructure()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 3 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-30 09:25:39 --> Undefined property: stdClass::$note
+in APPPATH\Models\Page\PageModel.php on line 362.
+ 1 APPPATH\Models\Page\PageModel.php(362): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$note', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Page\\PageModel.php', 362)
+ 2 APPPATH\Controllers\Page\PageController.php(94): App\Models\Page\PageModel->getRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->getPagesStructure()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-30 09:34:06 --> Call to undefined method App\Models\Page\PageModel::updatePageDataRecord
+in SYSTEMPATH\Model.php on line 838.
+ 1 APPPATH\Controllers\Page\PageController.php(290): CodeIgniter\Model->__call('updatePageDataRecord', [])
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->updatePagesStructure()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-30 09:36:25 --> Call to undefined method App\Models\Page\PageModel::updatePageStructureRecord
+in SYSTEMPATH\Model.php on line 838.
+ 1 APPPATH\Controllers\Page\PageController.php(290): CodeIgniter\Model->__call('updatePageStructureRecord', [])
+ 2 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->updatePagesStructure()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 4 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-30 09:37:06 --> Undefined array key "rank"
+in APPPATH\Models\Page\PageModel.php on line 540.
+ 1 APPPATH\Models\Page\PageModel.php(540): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "rank"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Page\\PageModel.php', 540)
+ 2 APPPATH\Controllers\Page\PageController.php(290): App\Models\Page\PageModel->updatePageStructureRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->updatePagesStructure()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-30 09:37:17 --> Undefined array key "rank"
+in APPPATH\Models\Page\PageModel.php on line 556.
+ 1 APPPATH\Models\Page\PageModel.php(556): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "rank"', 'C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Page\\PageModel.php', 556)
+ 2 APPPATH\Controllers\Page\PageController.php(290): App\Models\Page\PageModel->updatePageStructureRecord()
+ 3 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->updatePagesStructure()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+ 5 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-08-30 10:05:07 --> mysqli_sql_exception: Unknown column 'pages_translations.id' in 'field list' in C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `pages`....', 0)
+#1 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pages`....')
+#2 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pages`....')
+#3 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pages`....', Array, false)
+#4 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Page\PageModel.php(314): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Models\Page\PageModel.php(531): App\Models\Page\PageModel->getRecord()
+#6 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\app\Controllers\Page\PageController.php(290): App\Models\Page\PageModel->updatePageStructureRecord()
+#7 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(932): App\Controllers\Page\PageController->updatePagesStructure()
+#8 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+#9 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\system\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\SMALL_PROJECTS\foxdent\v1\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-08-30 10:05:07 --> Unknown column 'pages_translations.id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`meta_title`, `pages_translations`.`meta_description`, `pages_translations`.`meta_keywords`
+FROM `pages`
+WHERE `pages_translations`.`localization` = \'cs_CZ\'
+AND `pages`.`removed` = 0
+ORDER BY `id` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`meta_title`, `pages_translations`.`meta_description`, `pages_translations`.`meta_keywords`
+FROM `pages`
+WHERE `pages_translations`.`localization` = \'cs_CZ\'
+AND `pages`.`removed` = 0
+ORDER BY `id` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`meta_title`, `pages_translations`.`meta_description`, `pages_translations`.`meta_keywords`
+FROM `pages`
+WHERE `pages_translations`.`localization` = \'cs_CZ\'
+AND `pages`.`removed` = 0
+ORDER BY `id` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pages`.`id`, `pages`.`slug`, `pages`.`rank`, `pages`.`name`, `pages`.`active`, `pages`.`create_time`, `pages`.`update_time`, `pages_translations`.`id` AS `translationPageId`, `pages_translations`.`localization`, `pages_translations`.`title`, `pages_translations`.`meta_title`, `pages_translations`.`meta_description`, `pages_translations`.`meta_keywords`
+FROM `pages`
+WHERE `pages_translations`.`localization` = :pages_translations.localization:
+AND `pages`.`removed` = :pages.removed:
+ORDER BY `id` ASC', [...], false)
+ 5 APPPATH\Models\Page\PageModel.php(314): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\Page\PageModel.php(531): App\Models\Page\PageModel->getRecord()
+ 7 APPPATH\Controllers\Page\PageController.php(290): App\Models\Page\PageModel->updatePageStructureRecord()
+ 8 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Page\PageController->updatePagesStructure()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page\PageController))
+10 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

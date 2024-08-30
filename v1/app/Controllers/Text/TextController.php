@@ -35,6 +35,7 @@ class TextController extends BaseController
         }
         
         $__text->setTextTranslationId($textTranslationId);
+        $__text->setLocalization(NULL);
         $text = $__text->getRecord();
 
         $data['text'] = $text;
@@ -130,6 +131,9 @@ class TextController extends BaseController
             'textSubtitle'          => 'permit_empty|max_length[255]',
             'textContent'           => 'permit_empty',
             'textLocalization'      => 'required',
+            'textMetaTitle'         => 'permit_empty|max_length[100]',
+            'textMetaDescription'   => 'permit_empty|max_length[100]',
+            'textMetaKeywords'      => 'permit_empty|max_length[100]',
         ];
         $validation->setRules($validationRules);
 
@@ -155,13 +159,15 @@ class TextController extends BaseController
         }
 
         $textTranslationData = [
-            'text_id'   => $inputData['textTextId'],
-            'title'      => $inputData['textTitle'],
-            'subtitle'      => $inputData['textSubtitle'],
-            'localization'      => $inputData['textLocalization'],
-            'content'      => htmlspecialchars($inputData['textContent']),
+            'text_id'           => strip_tags($inputData['textTextId']),
+            'title'             => strip_tags($inputData['textTitle']),
+            'subtitle'          => strip_tags($inputData['textSubtitle']),
+            'localization'      => strip_tags($inputData['textLocalization']),
+            'content'           => htmlspecialchars($inputData['textContent']),
+            'meta_title'        => strip_tags($inputData['textMetaTitle']),
+            'meta_description'  => strip_tags($inputData['textMetaDescription']),
+            'meta_keywords'     => strip_tags($inputData['textMetaKeywords']),
         ];
-
 
         $__text = new TextModel;
         $__text->setData($textTranslationData);
@@ -198,6 +204,9 @@ class TextController extends BaseController
             'textSubtitle'          => 'permit_empty|max_length[255]',
             'textContent'           => 'permit_empty',
             'textLocalization'      => 'required',
+            'textMetaTitle'         => 'permit_empty|max_length[100]',
+            'textMetaDescription'   => 'permit_empty|max_length[100]',
+            'textMetaKeywords'      => 'permit_empty|max_length[100]',
         ];
         $validation->setRules($validationRules);
 
@@ -208,14 +217,16 @@ class TextController extends BaseController
             return $this->respond($data, 422, lang('Response.422'));
         }   
 
-        //$slug = CustomHelper::createSlug($inputData['textName']);
 
-        $textTranlsationData = [
-            'text_id'   => $inputData['textTextId'],
-            'title'      => $inputData['textTitle'],
-            'subtitle'      => $inputData['textSubtitle'],
-            'localization'      => $inputData['textLocalization'],
-            'content'      => htmlspecialchars($inputData['textContent']),
+        $textTranslationData = [
+            'text_id'           => strip_tags($inputData['textTextId']),
+            'title'             => strip_tags($inputData['textTitle']),
+            'subtitle'          => strip_tags($inputData['textSubtitle']),
+            'localization'      => strip_tags($inputData['textLocalization']),
+            'content'           => htmlspecialchars($inputData['textContent']),
+            'meta_title'        => strip_tags($inputData['textMetaTitle']),
+            'meta_description'  => strip_tags($inputData['textMetaDescription']),
+            'meta_keywords'     => strip_tags($inputData['textMetaKeywords']),
         ];
 
         $textData = [
@@ -224,7 +235,7 @@ class TextController extends BaseController
         ];
 
         $__text = new TextModel;
-        $__text->setData($textTranlsationData);
+        $__text->setData($textTranslationData);
         $__text->setTextTranslationId($textTranslationId);
         if ($__text->updateRecord() === FALSE)
         {

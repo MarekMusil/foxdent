@@ -7,6 +7,7 @@ use App\Models\System\MenuModel;
 use App\Models\User\UserModel;
 use App\Models\User\UserRoleModel;
 use App\Models\Text\TextModel;
+use App\Models\Page\PageModel;
 
 class SystemOptionController extends BaseController
 {    
@@ -30,6 +31,9 @@ class SystemOptionController extends BaseController
 
         $__text = new TextModel;
         $texts = $__text->getCacheData('select-option-group-by-type');
+
+        $__page = new PageModel;
+        $pages = $__page->getCacheData(IMPLICIT_DATA_FORMAT);
 
         $__menu = new MenuModel;
         $menuItems = $__menu->getMenu();
@@ -80,11 +84,11 @@ class SystemOptionController extends BaseController
         ];
 
         $data = [
-            'textServices'             => ($texts['services']),
-            'textTechnologies'             => ($texts['technologies']),
-            'textOthers'             => ($texts['others']),
+            'textServices'      => ($texts['services']),
+            'textTechnologies'  => ($texts['technologies']),
+            'textOthers'        => ($texts['others']),
             'texts'             => ($texts['all']),
-
+            'pages'             => array_values($pages),
             'users'             => array_values($users),
             'userRoles'         => array_values($userRoles),  
             'localizations'     => array_values($localizations),  

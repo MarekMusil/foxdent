@@ -247,6 +247,79 @@ class ColumnModel extends Model
                     ]
                 }
             ],
+            "pages": [
+                {
+                    "key": "pages_translations.id",
+                    "dataAttr": "id",
+                    "name": "ID",
+                    "rank": 1,
+                    "sorting": 1,
+                    "isLink": 0,
+                    "url": "..."
+                },
+                {
+                    "key": "name",
+                    "dataAttr": "name",
+                    "name": "Jméno",
+                    "rank": 1,
+                    "sorting": 0,
+                    "isLink": 1,
+                    "url": "/pages/texts/{:id}"
+                },
+                {
+                    "key": "localization",
+                    "dataAttr": "localization",
+                    "name": "Jazyk",
+                    "rank": 1,
+                    "sorting": 0,
+                    "isLink": 0,
+                    "url": "..."
+                },
+                {
+                    "key": "title",
+                    "dataAttr": "title",
+                    "name": "Titulek",
+                    "rank": 1,
+                    "sorting": 0,
+                    "isLink": 0,
+                    "url": "..."
+                },
+                {
+                    "key": "rank",
+                    "dataAttr": "rank",
+                    "name": "Pořadí",
+                    "rank": 1,
+                    "sorting": 1,
+                    "isLink": 0,
+                    "url": "..."
+                },
+                {
+                    "key": "update_time",
+                    "dataAttr": "updateTime.format",
+                    "name": "Upraveno",
+                    "rank": 1,
+                    "sorting": 1,
+                    "isLink": 0,
+                    "url": "..."
+                },
+                {
+                    "key": "options",
+                    "name": "Možnosti",
+                    "rank": 0,
+                    "sorting": 0,
+                    "isLink": 0,
+                    "url": "...",
+                    "items": [
+                        {
+                            "key": "edit",
+                            "icon": "bi bi-pencil",
+                            "name": "Editovat",
+                            "isLink": 1,
+                            "url": "/pages/texts/{:id}"
+                        }                     
+                    ]
+                }
+            ],
             "texts": [
                 {
                     "key": "texts_translations.id",
