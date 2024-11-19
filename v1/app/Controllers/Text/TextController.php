@@ -11,7 +11,8 @@ use App\Models\Button\ButtonModel;
 use App\Models\Text\TextModel;
 use App\Models\ContactData\ContactDataModel;
 use CodeIgniter\HTTP\Client;
-
+use App\Helpers\CustomHelper;
+use App\Models\System\SingleFileModel;
 
 class TextController extends BaseController
 {
@@ -364,5 +365,69 @@ class TextController extends BaseController
         }
 
         return TRUE;
+    }
+
+    public function uploadTechnologyPhoto($textTranslationId = NULL)
+    {
+        $technologyId = NULL;
+        $transaction = NULL;
+
+        if(!is_null($textTranslationId))
+        {
+            $__text = new TextModel;
+
+            if ($__text->existsTextTranslationId($textTranslationId, 0) === FALSE)
+            {
+                return $this->respond(null, 404, lang('Response.404'));
+            }
+
+            if ($__text->isTextTransaltionIdTechnology($textTranslationId, 0) === FALSE)
+            {         
+                return $this->respond(FALSE, 400, lang('Response.400'));  
+            }
+
+            $__text->setTextTranslationId($textTranslationId);
+            $technology = $__text->getRecord();
+            $technologySlug = CustomHelper::createSlug($technology['name']);
+
+            $token = CustomHelper::generateToken('alnum', 4);
+            $uploadDirectory = 'assets/images/technologies/';
+            $name = $technologySlug . '-' . $token;
+
+            $technologyId = $technology['textId'];
+        }
+        else
+        {
+            $token = CustomHelper::generateToken('alnum', 4);
+            $transaction = CustomHelper::generateToken('alnum', 100);
+            $uploadDirectory = 'temp/';
+            $name = 'new-unknown-'.$token;
+        }
+        
+        $file = $_FILES['file'];
+        $fileType = '.jpg';
+
+        $singleFileData = [
+            'text_technology_id'    => $technologyId,
+            'name'                  => $name,
+            'type'                  => $fileType,
+            'path'                  => $uploadDirectory,
+            'transaction'           => $transaction,
+        ];
+
+        $singleFile = new SingleFileModel;
+        $singleFile->setData($singleFileData);
+        
+        if($singleFile->createRecord() === TRUE)
+        {
+            $destinationPath = '../' . $uploadDirectory . $name . $fileType;
+            move_uploaded_file($file['tmp_name'], $destinationPath);
+        }
+
+        $data['newPhotoImgUrl'] = base_url() . $destinationPath;
+        $data['technologyPhotoTransaction'] = $transaction;
+
+        return $this->respond($data, 200, lang('Response.200'));
+
     }
 }

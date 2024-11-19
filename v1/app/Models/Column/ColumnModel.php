@@ -93,15 +93,6 @@ class ColumnModel extends Model
                     "url": "/employees/{:id}"
                 },
                 {
-                    "key": "degree",
-                    "dataAttr": "degree",
-                    "name": "Titul",
-                    "rank": 1,
-                    "sorting": 0,
-                    "isLink": 0,
-                    "url": "..."
-                },
-                {
                     "key": "text",
                     "dataAttr": "text",
                     "name": "Povolání",

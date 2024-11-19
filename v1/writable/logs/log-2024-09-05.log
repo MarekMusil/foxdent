@@ -1,0 +1,9 @@
+CRITICAL - 2024-09-05 12:30:24 --> syntax error, unexpected token "return", expecting "function" or "const"
+in APPPATH\Models\Text\TextModel.php on line 588.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\SMALL_PROJECTS\\foxdent\\v1\\app\\Models\\Text\\TextModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Text\\TextModel')
+ 3 APPPATH\Controllers\Text\TextController.php(31): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Text\\TextModel')
+ 4 SYSTEMPATH\CodeIgniter.php(932): App\Controllers\Text\TextController->detail('19')
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Text\TextController))
+ 6 SYSTEMPATH\CodeIgniter.php(366): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

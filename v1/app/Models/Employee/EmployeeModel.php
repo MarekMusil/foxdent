@@ -299,7 +299,10 @@ class EmployeeModel extends Model
                     'name' => $row->name,
                     'rank' => (int)$row->rank,
                     'photoImgUrl' => str_replace('v1/', '', base_url()) . '../assets/images/employees/empty_image.jpg',
-                    'degree' => $row->degree,
+                    'usePhoto' => [
+                        'value' => (int)$row->use_photo,
+                        'name' => (int)$row->use_photo == 1 ? 'Ano' : 'Ne',
+                    ],
                     'text' => $row->text,
                     'education' => $row->education,
                     'officeHours' => ($row->office_hours) != NULL ? htmlspecialchars_decode($row->office_hours): "",
@@ -336,7 +339,7 @@ class EmployeeModel extends Model
                 {
                     foreach ($employees as $employeeId => $slide)
                     {
-                        if(array_key_exists($employeeId, $singleFileData))
+                        if(array_key_exists($employeeId, $singleFileData) && $employees[$employeeId]['usePhoto']['value'] == 1)
                         {
                             $employees[$employeeId]['photoImgUrl'] = str_replace('v1/', '', base_url()) . $singleFileData[$employeeId]['path'] . $singleFileData[$employeeId]['name'] . $singleFileData[$employeeId]['type'];
                         }

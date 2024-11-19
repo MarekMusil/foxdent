@@ -14,6 +14,7 @@ use App\Models\Insurance\InsuranceModel;
 use App\Models\System\SystemUpdateModel;
 use App\Models\ContactData\ContactDataModel;
 use App\Models\ImportantMessage\ImportantMessageModel;
+use App\Models\Page\PageModel;
 use CodeIgniter\HTTP\Client;
 
 
@@ -72,7 +73,14 @@ class ContentController extends BaseController
         $__insurance = new InsuranceModel;
         $insurances = $__insurance->getRecord();
 
+        $__page = new PageModel;
+        $__page->setPageLimit(NULL);
+        $__page->setActive(1);
+        $pages = $__page->getRecord();
+
+
         $data = [
+            'pages' => array_values($pages),
             'services' => array_values($texts['services']),
             'technologies' => array_values($texts['technologies']),
             'others' => $texts['others'],

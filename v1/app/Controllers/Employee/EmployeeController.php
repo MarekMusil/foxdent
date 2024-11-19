@@ -107,12 +107,12 @@ class EmployeeController extends BaseController
         $validationRules = [
             'employeeName'              => 'required|min_length[4]|max_length[100]',
             'employeeRank'              => 'permit_empty|numeric|less_than_equal_to[255]',
-            'employeeDegree'            => 'permit_empty|max_length[6]',
             'employeeText'              => 'permit_empty|max_length[100]',
             'employeeEducation'         => 'permit_empty|max_length[100]',
             'employeeOfficeHours'       => 'permit_empty|max_length[255]',
             'employeeType'              => 'permit_empty|in_list[1,2,3,4]',
             'employeeActive'            => 'required|in_list[0,1]',
+            'employeeUsePhoto'          => 'required|in_list[0,1]',
             'employeePhotoTransaction'  => 'permit_empty|exact_length[100]',
         ];
         $validation->setRules($validationRules);
@@ -135,12 +135,12 @@ class EmployeeController extends BaseController
         $employeeData = [
             'name'      => $inputData['employeeName'],
             'rank'      => $inputData['employeeRank'] ?? 1,
-            'degree'      => $inputData['employeeDegree'] ?? '',
             'text'      => $inputData['employeeText'] ?? '',
             'education'      => $inputData['employeeEducation'] ?? '',
             'office_hours'      => htmlspecialchars($inputData['employeeOfficeHours']),
             'type'      => $inputData['employeeType'],
             'active'      => $inputData['employeeActive'],
+            'use_photo'      => $inputData['employeeUsePhoto']
         ];
 
         $__employee = new EmployeeModel;
@@ -180,12 +180,12 @@ class EmployeeController extends BaseController
         $validationRules = [
             'employeeName'              => 'required|min_length[4]|max_length[100]',
             'employeeRank'              => 'permit_empty|numeric|less_than_equal_to[255]',
-            'employeeDegree'            => 'permit_empty|max_length[6]',
             'employeeText'              => 'permit_empty|max_length[100]',
             'employeeEducation'         => 'permit_empty|max_length[100]',
             'employeeOfficeHours'       => 'permit_empty|max_length[255]',
             'employeeType'              => 'permit_empty|in_list[1,2,3,4]',
             'employeeActive'            => 'required|in_list[0,1]',
+            'employeeUsePhoto'          => 'required|in_list[0,1]',
         ];
         $validation->setRules($validationRules);
 
@@ -201,12 +201,12 @@ class EmployeeController extends BaseController
         $employeeData = [
             'name'      => $inputData['employeeName'],
             'rank'      => $inputData['employeeRank'] ?? 1,
-            'degree'      => $inputData['employeeDegree'] ?? '',
             'text'      => $inputData['employeeText'],
             'education'      => $inputData['employeeEducation'],
             'office_hours'      => htmlspecialchars($inputData['employeeOfficeHours']),
             'type'      => $inputData['employeeType'],
             'active'      => $inputData['employeeActive'],
+            'use_photo'      => $inputData['employeeUsePhoto']
         ];
 
         $__employee = new EmployeeModel;

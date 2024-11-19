@@ -56,6 +56,7 @@ $routes->get('/texts/services', 'Text\TextController::getServices');
 $routes->get('/texts/technologies', 'Text\TextController::getTechnologies');
 $routes->put('/texts/services', 'Text\TextController::updateServices');
 $routes->put('/texts/technologies', 'Text\TextController::updateTechnologies');
+$routes->post('/texts/technologies/(:num)/upload/photo', 'Text\TextController::uploadTechnologyPhoto/$1');
 
 $routes->get('/pricelists', 'Pricelist\PricelistController::get');
 //$routes->get('/pricelists/(:num)', 'Pricelist\PricelistController::detail/$1');

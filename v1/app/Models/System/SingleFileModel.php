@@ -26,6 +26,8 @@ class SingleFileModel extends Model
     private $appType = NULL;
     private $employeeId = NULL;
     private $employeesId = NULL;
+    private $technologyId = NULL;
+    private $technologiesId = NULL;
     private $slideId = NULL;
     private $slidesId = NULL;
     private $singleFileId = NULL;
@@ -75,6 +77,16 @@ class SingleFileModel extends Model
     public function setEmployeesId($employeesId)
     {
         $this->employeesId = $employeesId;
+    }
+
+    public function setTechnologyId($technologyId)
+    {
+        $this->technologyId = $technologyId;
+    }
+
+    public function setTechnologiesId($technologiesId)
+    {
+        $this->technologiesId = $technologiesId;
     }
 
     public function setSlideId($slideId)
@@ -208,6 +220,16 @@ class SingleFileModel extends Model
             $builder->whereIn('employee_id', $this->employeesId);
         }
 
+        if (!is_null($this->technologyId))  
+        {
+            $builder->where('text_technology_id', $this->technologyId);
+        }
+
+        if (!is_null($this->technologiesId))  
+        {
+            $builder->whereIn('text_technology_id', $this->technologiesId);
+        }
+
         if (!is_null($this->slideId))  
         {
             $builder->where('slide_id', $this->slideId);
@@ -308,6 +330,7 @@ class SingleFileModel extends Model
                 $singleFile = [
                     'id' => (int)$row->id,
                     'employee' =>['id' => (int)$row->employee_id],
+                    'technology' =>['id' => (int)$row->text_technology_id],
                     'slide' =>['id' => (int)$row->slide_id],
                     'name' => $row->name,
                     'type' => $row->type,
@@ -325,6 +348,13 @@ class SingleFileModel extends Model
                     if(!array_key_exists($this->employee_id, $singleFiles))
                     {
                         $singleFiles[$row->employee_id] = $singleFile;
+                    }
+                }
+                elseif(!is_null($this->technologyId) || !is_null($this->technologiesId))
+                {
+                    if(!array_key_exists($this->technology_id, $singleFiles))
+                    {
+                        $singleFiles[$row->text_technology_id] = $singleFile;
                     }
                 }
                 elseif(!is_null($this->slideId) || !is_null($this->slidesId))
@@ -348,6 +378,10 @@ class SingleFileModel extends Model
             elseif (!is_null($this->employeeId))
             {
                 return $singleFiles[$this->employeeId];
+            }
+            elseif (!is_null($this->technologyId))
+            {
+                return $singleFiles[$this->technologyId];
             }
             elseif (!is_null($this->slideId))
             {

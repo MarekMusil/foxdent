@@ -6,8 +6,10 @@ use CodeIgniter\Model;
 use App\Models\System\SystemUpdateModel;
 use DateTime;
 use App\Helpers\CustomHelper;
+use App\Models\System\SingleFileModel;
 helper('filesystem');
 helper('file');
+
 //use App\Helpers\CustomHelper;
 
 class TextModel extends Model
@@ -218,11 +220,12 @@ class TextModel extends Model
         return FALSE;        
     }
 
-    public function existsTextTranslationId($textTranslationId, $removed = 0)
+    public function existsTextTranslationId($textTranslationId)
     {
         $builder = $this->db->table($this->tblTextTrans);
         $builder->select('id');
         $builder->where('id', $textTranslationId);
+
         $q = $builder->get()->getResult();
 
         if ($this->debugMode === TRUE)
@@ -237,6 +240,35 @@ class TextModel extends Model
         
         return FALSE;        
     }
+
+    public function isTextTransaltionIdTechnology($textTranslationId , $removed = NULL)
+    {    
+        $builder = $this->db->table($this->table);
+        $builder->select($this->table.'.id as textId');
+        $builder->join($this->tblTextTrans, $this->table . '.id = ' . $this->tblTextTrans . '.text_id');
+
+        if (!is_null($removed))
+        {
+            $builder->where($this->table.'.removed', $removed);
+        }
+
+        $builder->where($this->tblTextTrans.'.id', $textTranslationId);
+        $builder->where($this->table.'.type', 2);
+        $q = $builder->get()->getResult();
+
+        if ($this->debugMode === TRUE)
+        {
+            echo $builder->getCompiledSelect();
+        }
+        
+        if (count($q) > 0)
+        {
+            return TRUE;
+        }
+        
+        return FALSE;
+    }
+
 
     public function getRecord()
     {
@@ -514,6 +546,7 @@ class TextModel extends Model
                     $text['meta']['title'] = $row->meta_title;
                     $text['meta']['description'] = $row->meta_description;
                     $text['meta']['keywords'] = $row->meta_keywords;
+                    $text['photoImgUrl'] = '';
                     $technologyTexts[$row->translationTextId] = $text;
                 }
                 else
@@ -527,6 +560,17 @@ class TextModel extends Model
 
             if (!is_null($this->textTranslationId) && array_key_exists($this->textTranslationId, $texts))
             {
+                $textId = $texts[$this->textTranslationId]['textId'];
+
+                $__singleFile = new SingleFileModel;
+                $__singleFile->setTechnologyId($textId);
+                $singleFileData = $__singleFile->getRecord();
+
+                if(!empty($singleFileData))
+                {
+                    $texts[$this->textTranslationId]['photoImgUrl'] = str_replace('v1/', '', base_url()) . $singleFileData['path'] . $singleFileData['name'] . $singleFileData['type'];
+                }
+
                 return $texts[$this->textTranslationId];
             }
 
