@@ -339,7 +339,7 @@ class EmployeeModel extends Model
                 {
                     foreach ($employees as $employeeId => $slide)
                     {
-                        if(array_key_exists($employeeId, $singleFileData) && $employees[$employeeId]['usePhoto']['value'] == 1)
+                        if(array_key_exists($employeeId, $singleFileData) && ($employees[$employeeId]['usePhoto']['value'] == 1 || $this->appType == 'foxdent_crm'))
                         {
                             $employees[$employeeId]['photoImgUrl'] = str_replace('v1/', '', base_url()) . $singleFileData[$employeeId]['path'] . $singleFileData[$employeeId]['name'] . $singleFileData[$employeeId]['type'];
                         }

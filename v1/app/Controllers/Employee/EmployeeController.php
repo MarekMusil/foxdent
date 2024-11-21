@@ -29,6 +29,7 @@ class EmployeeController extends BaseController
     public function detail($employeeId)
     {
         $__employee = new EmployeeModel;
+        $__employee->setAppType($this->clientAppName); 
 
         if ($__employee->existsId($employeeId) === FALSE)
         {         
@@ -49,6 +50,7 @@ class EmployeeController extends BaseController
         $orderType = 'ASC';
         $module = 'employees';
         $__employee = new EmployeeModel;
+        $__employee->setAppType($this->clientAppName);        
 
         if ($this->request->getGet('employeeType'))
         {
