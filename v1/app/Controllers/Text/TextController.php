@@ -218,6 +218,10 @@ class TextController extends BaseController
             return $this->respond($data, 422, lang('Response.422'));
         }   
 
+        isset($inputData['textMetaTitle']) ? strip_tags($inputData['textMetaTitle']) : $inputData['textMetaTitle'] = '';
+        isset($inputData['textMetaDescription']) ? strip_tags($inputData['textMetaDescription']) : $inputData['textMetaDescription'] ='';
+        isset($inputData['textMetaKeywords']) ? strip_tags($inputData['textMetaKeywords']) : $inputData['textMetaKeywords'] = '';
+
 
         $textTranslationData = [
             'text_id'           => strip_tags($inputData['textTextId']),
@@ -225,9 +229,9 @@ class TextController extends BaseController
             'subtitle'          => strip_tags($inputData['textSubtitle']),
             'localization'      => strip_tags($inputData['textLocalization']),
             'content'           => htmlspecialchars($inputData['textContent']),
-            'meta_title'        => strip_tags($inputData['textMetaTitle']),
-            'meta_description'  => strip_tags($inputData['textMetaDescription']),
-            'meta_keywords'     => strip_tags($inputData['textMetaKeywords']),
+            'meta_title'        => $inputData['textMetaTitle'],
+            'meta_description'  => $inputData['textMetaDescription'],
+            'meta_keywords'     => $inputData['textMetaKeywords'],
         ];
 
         $textData = [
